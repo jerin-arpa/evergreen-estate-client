@@ -1,162 +1,176 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+import { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { FaUserCircle } from 'react-icons/fa';
+import { LuLogOut } from 'react-icons/lu';
+import DarkModeToggle from "react-dark-mode-toggle";
+import PropTypes from 'prop-types';
+import logo from '../../assets/images/logo.png';
+import { AuthContext } from "../../provider/AuthProvider";
 
-const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-function Navbar() {
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
+const Navbar = ({ isDarkMode, setIsDarkMode }) => {
 
-    const handleOpenNavMenu = (event) => {
-        setAnchorElNav(event.currentTarget);
-    };
-    const handleOpenUserMenu = (event) => {
-        setAnchorElUser(event.currentTarget);
-    };
+    const { user, logOut } = useContext(AuthContext);
 
-    const handleCloseNavMenu = () => {
-        setAnchorElNav(null);
-    };
+    const handleSignOut = () => {
+        logOut()
+            .then(result => {
+                console.log(result.user)
+            })
+            .catch(() => { })
+    }
 
-    const handleCloseUserMenu = () => {
-        setAnchorElUser(null);
-    };
+
+    const navLink = <>
+        {
+            user ? <>
+                <li>
+                    <NavLink to='/' className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "font-bold text-primary underline" : ""
+                    }>Home</NavLink>
+                </li>
+                <li>
+                    <NavLink to='/availableFoods' className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "font-bold underline text-primary" : ""
+                    }>All Properties</NavLink>
+                </li>
+                <li>
+                    <NavLink to='/addFood' className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "font-bold underline text-primary" : ""
+                    }>Dashboard</NavLink>
+                </li>
+                <li>
+                    <NavLink to='/contact' className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "font-bold underline text-primary" : ""
+                    }>Contact Us</NavLink>
+                </li>
+                <li>
+                    <NavLink to='/about' className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "font-bold underline text-primary" : ""
+                    }>About</NavLink>
+                </li>
+            </> : <>
+                <li>
+                    <NavLink to='/' className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "font-bold text-primary underline" : ""
+                    }>Home</NavLink>
+                </li>
+                <li>
+                    <NavLink to='/contact' className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "font-bold underline text-primary" : ""
+                    }>Contact Us</NavLink>
+                </li>
+                <li>
+                    <NavLink to='/about' className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "font-bold underline text-primary" : ""
+                    }>About</NavLink>
+                </li>
+            </>
+        }
+
+    </>
+
+
 
     return (
-        <AppBar position="static">
-            <Container maxWidth="xl">
-                <Toolbar disableGutters>
-                    <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="a"
-                        href="#app-bar-with-responsive-menu"
-                        sx={{
-                            mr: 2,
-                            display: { xs: 'none', md: 'flex' },
-                            fontFamily: 'monospace',
-                            fontWeight: 700,
-                            letterSpacing: '.3rem',
-                            color: 'inherit',
-                            textDecoration: 'none',
-                        }}
-                    >
-                        LOGO
-                    </Typography>
+        <div className="bg-base-200">
+            <div className="navbar container mx-auto px-5 py-5">
+                <div className="navbar-start">
+                    <div className="dropdown">
+                        <label tabIndex={0} className="btn btn-ghost lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                        </label>
+                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[2] p-2 shadow bg-base-100 rounded-box w-52">
+                            {navLink}
+                        </ul>
+                    </div>
+                    <div className="flex gap-1">
+                        <div className="flex items-center">
+                            <img className="w-16" src={logo} alt="" />
+                        </div>
+                        <div className="flex items-center">
+                            <p className="text-sm md:text-2xl font-extrabold">Evergreen <span className="text-primary">Estate</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div className="navbar-center hidden lg:flex">
+                    <ul className="flex gap-7 px-1">
+                        {navLink}
+                    </ul>
+                </div>
+                <div className="navbar-end">
+                    <div className="mr-2">
 
-                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-                        <IconButton
-                            size="large"
-                            aria-label="account of current user"
-                            aria-controls="menu-appbar"
-                            aria-haspopup="true"
-                            onClick={handleOpenNavMenu}
-                            color="inherit"
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                        <Menu
-                            id="menu-appbar"
-                            anchorEl={anchorElNav}
-                            anchorOrigin={{
-                                vertical: 'bottom',
-                                horizontal: 'left',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'left',
-                            }}
-                            open={Boolean(anchorElNav)}
-                            onClose={handleCloseNavMenu}
-                            sx={{
-                                display: { xs: 'block', md: 'none' },
-                            }}
-                        >
-                            {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">{page}</Typography>
-                                </MenuItem>
-                            ))}
-                        </Menu>
-                    </Box>
-                    <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-                    <Typography
-                        variant="h5"
-                        noWrap
-                        component="a"
-                        href="#app-bar-with-responsive-menu"
-                        sx={{
-                            mr: 2,
-                            display: { xs: 'flex', md: 'none' },
-                            flexGrow: 1,
-                            fontFamily: 'monospace',
-                            fontWeight: 700,
-                            letterSpacing: '.3rem',
-                            color: 'inherit',
-                            textDecoration: 'none',
-                        }}
-                    >
-                        LOGO
-                    </Typography>
-                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                        {pages.map((page) => (
-                            <Button
-                                key={page}
-                                onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
-                            >
-                                {page}
-                            </Button>
-                        ))}
-                    </Box>
+                        {
+                            user ?
+                                <div className="flex gap-2 md:gap-4">
+                                    <div className="flex items-center">
+                                        <DarkModeToggle
+                                            onChange={setIsDarkMode}
+                                            checked={isDarkMode}
+                                            size={40}
+                                        />
 
-                    <Box sx={{ flexGrow: 0 }}>
-                        <Tooltip title="Open settings">
-                            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                            </IconButton>
-                        </Tooltip>
-                        <Menu
-                            sx={{ mt: '45px' }}
-                            id="menu-appbar"
-                            anchorEl={anchorElUser}
-                            anchorOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            open={Boolean(anchorElUser)}
-                            onClose={handleCloseUserMenu}
-                        >
-                            {settings.map((setting) => (
-                                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                    <Typography textAlign="center">{setting}</Typography>
-                                </MenuItem>
-                            ))}
-                        </Menu>
-                    </Box>
-                </Toolbar>
-            </Container>
-        </AppBar>
+                                    </div>
+                                    <div className="dropdown dropdown-end">
+                                        <div className="flex gap-3">
+                                            <label tabIndex={0}>
+                                                {
+                                                    user.photoURL ? (
+                                                        <img className="w-8 md:w-10 rounded-full" src={user.photoURL} alt="" />
+                                                    ) : (
+                                                        <FaUserCircle className="text-4xl">
+                                                        </FaUserCircle>
+                                                    )
+                                                }
+                                            </label>
+                                        </div>
+                                        <div className="dropdown-content z-[2] menu p-2 shadow rounded-box lg:w-96 bg-white">
+                                            <div className="p-3">
+                                                <div className="flex justify-center">
+                                                    {
+                                                        user.photoURL ? (
+                                                            <img className="rounded-full w-16 md:w-24" src={user.photoURL} alt="" />
+                                                        ) : (
+                                                            <FaUserCircle className="text-7xl">
+                                                            </FaUserCircle>
+                                                        )
+                                                    }
+                                                </div>
+                                                <div className="flex justify-center">
+                                                    <hr className="my-7 w-1/2" />
+                                                </div>
+                                                <div className="text-center">
+                                                    <h2 className="text-sm md:text-xl mb-2"><span className="text-primary">Name:</span> {user.displayName
+                                                    }</h2>
+                                                    <p className="text-sm  md:text-lg mb-5 "><span className="text-primary">Email:</span> {user.email}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <Link to='/login' className="flex items-center">
+                                        <button onClick={handleSignOut} className="bg-primary border-0 text-white p-2 rounded-lg"><LuLogOut></LuLogOut></button>
+                                    </Link>
+                                </div>
+                                :
+                                <>
+                                    <Link to='/login'>
+                                        <button className="bg-primary border-0 text-white p-2 md:p-3 px-1 md:px-4 rounded-lg text-sm md:text-xl">Login</button>
+                                    </Link>
+                                </>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div >
     );
-}
+};
+
+
+Navbar.propTypes = {
+    isDarkMode: PropTypes.bool,
+    setIsDarkMode: PropTypes.func,
+};
+
 export default Navbar;
