@@ -9,12 +9,10 @@ const Main = () => {
 
 
     return (
-        <div className="min-h-screen" data-theme={isDarkMode === true ? 'dark' : 'light'}>
+        <div data-theme={isDarkMode === true ? 'dark' : 'light'}>
             <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode}></Navbar>
             <Outlet></Outlet>
-            <div className="absolute w-full bottom-0">
-                <Footer></Footer>
-            </div>
+            <Footer></Footer>
         </div>
     );
 };

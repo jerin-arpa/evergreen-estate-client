@@ -17,18 +17,21 @@
     "@mui/styled-engine-sc": "^6.0.0-alpha.6",
     "axios": "^1.6.2",
     "firebase": "^10.6.0",
+    "framer-motion": "^10.16.5",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dark-mode-toggle": "^0.2.0",
     "react-dom": "^18.2.0",
+    "react-helmet": "^6.1.0",
     "react-icons": "^4.12.0",
     "react-router-dom": "^6.20.0",
     "react-social-icons": "^6.6.0",
     "sort-by": "^1.2.0",
     "styled-components": "^6.1.1",
-    "sweetalert2": "^11.10.1"
+    "sweetalert2": "^11.10.1",
+    "swiper": "^11.0.5"
   },
   "devDependencies": {
     "@types/react": "^18.2.37",

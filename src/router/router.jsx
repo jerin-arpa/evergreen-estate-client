@@ -3,6 +3,10 @@ import Main from "../Layout/Main/Main";
 import Home from "../Pages/HomePage/Home/Home";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
+import Contact from "../Pages/Contact/Contact";
+import About from "../Pages/About/About";
+import Dashboard from "../Pages/Dashboard/Dashboard";
+import PrivateRoute from "./PrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -15,6 +19,14 @@ const router = createBrowserRouter([
                 element: <Home></Home>,
             },
             {
+                path: "/contact",
+                element: <Contact></Contact>,
+            },
+            {
+                path: "/about",
+                element: <About></About>,
+            },
+            {
                 path: "/login",
                 element: <Login></Login>,
             },
@@ -24,6 +36,15 @@ const router = createBrowserRouter([
             },
         ]
     },
+    {
+        path: 'dashboard',
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+        children: [
+            {
+
+            }
+        ]
+    }
 ]);
 
 

@@ -26,43 +26,43 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
             user ? <>
                 <li>
                     <NavLink to='/' className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "font-bold text-primary underline" : ""
+                        isPending ? "pending" : isActive ? "font-bold text-[#03a9fc] underline" : ""
                     }>Home</NavLink>
                 </li>
                 <li>
-                    <NavLink to='/availableFoods' className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "font-bold underline text-primary" : ""
+                    <NavLink to='/allProperties' className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "font-bold underline text-[#03a9fc]" : ""
                     }>All Properties</NavLink>
                 </li>
                 <li>
-                    <NavLink to='/addFood' className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "font-bold underline text-primary" : ""
+                    <NavLink to='/dashboard' className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "font-bold underline text-[#03a9fc]" : ""
                     }>Dashboard</NavLink>
                 </li>
                 <li>
                     <NavLink to='/contact' className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "font-bold underline text-primary" : ""
+                        isPending ? "pending" : isActive ? "font-bold underline text-[#03a9fc]" : ""
                     }>Contact Us</NavLink>
                 </li>
                 <li>
                     <NavLink to='/about' className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "font-bold underline text-primary" : ""
+                        isPending ? "pending" : isActive ? "font-bold underline text-[#03a9fc]" : ""
                     }>About</NavLink>
                 </li>
             </> : <>
                 <li>
                     <NavLink to='/' className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "font-bold text-primary underline" : ""
+                        isPending ? "pending" : isActive ? "font-bold text-[#03a9fc] underline" : ""
                     }>Home</NavLink>
                 </li>
                 <li>
                     <NavLink to='/contact' className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "font-bold underline text-primary" : ""
+                        isPending ? "pending" : isActive ? "font-bold underline text-[#03a9fc]" : ""
                     }>Contact Us</NavLink>
                 </li>
                 <li>
                     <NavLink to='/about' className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "font-bold underline text-primary" : ""
+                        isPending ? "pending" : isActive ? "font-bold underline text-[#03a9fc]" : ""
                     }>About</NavLink>
                 </li>
             </>
@@ -89,7 +89,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
                             <img className="w-16" src={logo} alt="" />
                         </div>
                         <div className="flex items-center">
-                            <p className="text-sm md:text-2xl font-extrabold">Evergreen <span className="text-primary">Estate</span></p>
+                            <p className="text-sm md:text-2xl font-extrabold">Evergreen <span className="text-[#03a9fc]">Estate</span></p>
                         </div>
                     </div>
                 </div>
@@ -141,22 +141,22 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
                                                     <hr className="my-7 w-1/2" />
                                                 </div>
                                                 <div className="text-center">
-                                                    <h2 className="text-sm md:text-xl mb-2"><span className="text-primary">Name:</span> {user.displayName
+                                                    <h2 className="text-sm md:text-xl mb-2"><span className="text-[#03a9fc]">Name:</span> {user.displayName
                                                     }</h2>
-                                                    <p className="text-sm  md:text-lg mb-5 "><span className="text-primary">Email:</span> {user.email}</p>
+                                                    <p className="text-sm  md:text-lg mb-5 "><span className="text-[#03a9fc]">Email:</span> {user.email}</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
                                     <Link to='/login' className="flex items-center">
-                                        <button onClick={handleSignOut} className="bg-primary border-0 text-white p-2 rounded-lg"><LuLogOut></LuLogOut></button>
+                                        <button onClick={handleSignOut} className="bg-[#03a9fc] border-0 text-white p-2 rounded-lg"><LuLogOut></LuLogOut></button>
                                     </Link>
                                 </div>
                                 :
                                 <>
                                     <Link to='/login'>
-                                        <button className="bg-primary border-0 text-white p-2 md:p-3 px-1 md:px-4 rounded-lg text-sm md:text-xl">Login</button>
+                                        <button className="bg-[#03a9fc] border-0 text-white p-2 md:p-3 px-1 md:px-4 rounded-lg text-sm md:text-xl">Login</button>
                                     </Link>
                                 </>
                         }
