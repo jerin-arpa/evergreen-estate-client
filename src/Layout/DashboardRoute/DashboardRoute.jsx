@@ -8,11 +8,11 @@ import { AuthContext } from "../../provider/AuthProvider";
 
 const DashboardRoute = () => {
 
-    const isAdmin = true;
+    // const isAdmin = true;
     const { user } = useContext(AuthContext);
 
     return (
-        <div>
+        <div className="container mx-auto px-5">
             <div className="flex">
                 <div className="w-72 min-h-screen bg-[#03a9fc] pt-20 text-white">
                     <div className="pl-6 mb-16 font-extrabold">
@@ -35,51 +35,72 @@ const DashboardRoute = () => {
 
 
                     <ul className="menu">
-                        {
-                            isAdmin ? <>
-                                <li className="text-xl">
-                                    <NavLink to="/dashboard/adminProfile">
-                                        <FaHome></FaHome> Admin Profile</NavLink>
-                                </li>
-                                <li className="text-xl">
-                                    <NavLink to="/dashboard/manageProperties">
-                                        <MdRealEstateAgent></MdRealEstateAgent> Manage Properties</NavLink>
-                                </li>
-                                <li className="text-xl">
-                                    <NavLink to="/dashboard/manageUsers">
-                                        <FaUsers></FaUsers> Manage Users</NavLink>
-                                </li>
-                                <li className="text-xl">
-                                    <NavLink to="/dashboard/manageReviews">
-                                        <MdReviews></MdReviews>
-                                        Manage Reviews</NavLink>
-                                </li>
-                            </> : <>
-                                <li className="text-xl">
-                                    <NavLink to="/dashboard/userProfile">
-                                        <FaHome></FaHome> User Profile</NavLink>
-                                </li>
-                                <li className="text-xl">
-                                    <NavLink to="/dashboard/wishlist">
-                                        <MdRealEstateAgent></MdRealEstateAgent> Wishlist</NavLink>
-                                </li>
-                                <li className="text-xl">
-                                    <NavLink to="/dashboard/propertyBought">
-                                        <FaUsers></FaUsers> Property Bought</NavLink>
-                                </li>
-                                <li className="text-xl">
-                                    <NavLink to="/dashboard/myReviews">
-                                        <MdReviews></MdReviews>
-                                        My Reviews</NavLink>
-                                </li>
-                            </>
-                        }
-
+                        {/* Admin Dashboard */}
+                        <li className="text-xl">
+                            <NavLink to="/dashboard/adminProfile">
+                                <FaHome></FaHome> Admin Profile</NavLink>
+                        </li>
+                        <li className="text-xl">
+                            <NavLink to="/dashboard/manageProperties">
+                                <MdRealEstateAgent></MdRealEstateAgent> Manage Properties</NavLink>
+                        </li>
+                        <li className="text-xl">
+                            <NavLink to="/dashboard/manageUsers">
+                                <FaUsers></FaUsers> Manage Users</NavLink>
+                        </li>
+                        <li className="text-xl">
+                            <NavLink to="/dashboard/manageReviews">
+                                <MdReviews></MdReviews>
+                                Manage Reviews</NavLink>
+                        </li>
 
                         <div className="divider"></div>
 
+                        {/* Agent Dashboard */}
+                        <li className="text-xl">
+                            <NavLink to="/dashboard/agentProfile">
+                                <FaHome></FaHome> Agent Profile</NavLink>
+                        </li>
+                        <li className="text-xl">
+                            <NavLink to="/dashboard/addedProperties">
+                                <MdRealEstateAgent></MdRealEstateAgent>My Added Properties</NavLink>
+                        </li>
+                        <li className="text-xl">
+                            <NavLink to="/dashboard/soldProperties">
+                                <FaUsers></FaUsers> My Sold Properties</NavLink>
+                        </li>
+                        <li className="text-xl">
+                            <NavLink to="/dashboard/requestProperties">
+                                <MdReviews></MdReviews>
+                                Requested Properties</NavLink>
+                        </li>
+
+                        <div className="divider"></div>
+
+                        {/* User Dashboard */}
+                        <li className="text-xl">
+                            <NavLink to="/dashboard/userProfile">
+                                <FaHome></FaHome> User Profile</NavLink>
+                        </li>
+                        <li className="text-xl">
+                            <NavLink to="/dashboard/wishlist">
+                                <MdRealEstateAgent></MdRealEstateAgent> Wishlist</NavLink>
+                        </li>
+                        <li className="text-xl">
+                            <NavLink to="/dashboard/propertyBought">
+                                <FaUsers></FaUsers> Property Bought</NavLink>
+                        </li>
+                        <li className="text-xl">
+                            <NavLink to="/dashboard/myReviews">
+                                <MdReviews></MdReviews>
+                                My Reviews</NavLink>
+                        </li>
+
+
+
 
                         {/* Shared NavLink */}
+                        <div className="divider"></div>
                         <li className="text-xl">
                             <NavLink to="/">
                                 <FaHome></FaHome>Home</NavLink>
@@ -100,7 +121,7 @@ const DashboardRoute = () => {
                     </ul>
                 </div>
 
-                <div className="flex-1 bg-slate-100 h-[200px]">
+                <div className="flex-1">
                     <Outlet></Outlet>
                 </div>
             </div>

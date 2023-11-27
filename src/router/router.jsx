@@ -13,6 +13,8 @@ import ManageProperties from "../Pages/Dashboard/Admin/ManageProperties";
 import ManageUser from "../Pages/Dashboard/Admin/ManageUser";
 import AddAProperty from "../Pages/Dashboard/Agent/AddAProperty";
 import AllProperties from "../Pages/HomePage/AllProperties/AllProperties";
+import PropertyDetails from "../Pages/PropertyDetails/PropertyDetails";
+import Wishlist from "../Pages/Dashboard/User/Wishlist/Wishlist";
 
 
 const router = createBrowserRouter([
@@ -28,6 +30,11 @@ const router = createBrowserRouter([
             {
                 path: "/allProperties",
                 element: <AllProperties></AllProperties>,
+            },
+            {
+                path: "/propertyDetails/:id",
+                element: <PrivateRoute><PropertyDetails></PropertyDetails></PrivateRoute>,
+                loader: () => fetch('http://localhost:5000/properties'),
             },
             {
                 path: "/contact",
@@ -68,6 +75,13 @@ const router = createBrowserRouter([
                 path: 'manageUsers',
                 element: <ManageUser></ManageUser>,
             },
+
+            // user Route
+            {
+                path: 'wishlist',
+                element: <Wishlist></Wishlist>,
+                loader: () => fetch('http://localhost:5000/wishlist'),
+            }
         ]
     }
 ]);

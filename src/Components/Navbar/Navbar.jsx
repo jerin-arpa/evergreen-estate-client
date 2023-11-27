@@ -122,7 +122,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
                                             <label tabIndex={0}>
                                                 {
                                                     user.photoURL ? (
-                                                        <img className="w-8 md:w-10 rounded-full" src={user.photoURL} alt="" />
+                                                        <img className="w-8 md:w-14 md:h-14 rounded-full" src={user.photoURL} alt="" />
                                                     ) : (
                                                         <FaUserCircle className="text-4xl">
                                                         </FaUserCircle>

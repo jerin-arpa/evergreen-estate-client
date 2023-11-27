@@ -1,6 +1,5 @@
 import PropertyCard from "./PropertyCard";
 import useProperty from "../../../hooks/useProperty";
-import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FaGripfire } from "react-icons/fa";
 
@@ -47,16 +46,10 @@ const AllProperties = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
                 {
                     properties.slice(0, 4).map(property => <PropertyCard
-                        key={property.id}
+                        key={property._id}
                         property={property}
                     ></PropertyCard>)
                 }
-            </div>
-
-            <div className='flex justify-center mt-14'>
-                <Link to='/allProperties'>
-                    <button className="btn bg-[#03a9fc] border-[#03a9fc] hover:bg-white hover:text-[#03a9fc] text-white hover:border-[#03a9fc]">See All Property</button>
-                </Link>
             </div>
         </div>
     );
