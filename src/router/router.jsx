@@ -7,7 +7,12 @@ import Contact from "../Pages/Contact/Contact";
 import About from "../Pages/About/About";
 import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
-import Dashboard from "../Layout/Dashboard/Dashboard";
+import DashboardRoute from "../Layout/DashboardRoute/DashboardRoute";
+import AdminProfile from "../Pages/Dashboard/Admin/AdminProfile";
+import ManageProperties from "../Pages/Dashboard/Admin/ManageProperties";
+import ManageUser from "../Pages/Dashboard/Admin/ManageUser";
+import AddAProperty from "../Pages/Dashboard/Agent/AddAProperty";
+import AllProperties from "../Pages/HomePage/AllProperties/AllProperties";
 
 
 const router = createBrowserRouter([
@@ -19,6 +24,10 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home></Home>,
+            },
+            {
+                path: "/allProperties",
+                element: <AllProperties></AllProperties>,
             },
             {
                 path: "/contact",
@@ -36,16 +45,28 @@ const router = createBrowserRouter([
                 path: "/signup",
                 element: <SignUp></SignUp>,
             },
+            {
+                path: "/addProperty",
+                element: <AddAProperty></AddAProperty>,
+            },
         ]
     },
     {
         path: 'dashboard',
-        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+        element: <PrivateRoute><DashboardRoute></DashboardRoute></PrivateRoute>,
         children: [
             // Admin Route
             {
-                path: 'addItems',
-
+                path: 'adminProfile',
+                element: <AdminProfile></AdminProfile>,
+            },
+            {
+                path: 'manageProperties',
+                element: <ManageProperties></ManageProperties>,
+            },
+            {
+                path: 'manageUsers',
+                element: <ManageUser></ManageUser>,
             },
         ]
     }

@@ -1,18 +1,22 @@
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { FcGoogle } from 'react-icons/fc';
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../provider/AuthProvider';
+import UseAxiosPublic from '../../hooks/UseAxiosPublic';
+import SocialLogin from '../../Components/SocialLogin/SocialLogin';
 
 
 const SignUp = () => {
-    const { createUser, googleSignUp, setUserName, logOut } = useContext(AuthContext);
+    const axiosPublic = UseAxiosPublic();
+    const { createUser, updateUserprofile } = useContext(AuthContext);
     const [signUpError, setSignUpError] = useState('');
     const [termsError, setTermsError] = useState('');
     const [success, setSuccess] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
+    const location = useLocation();
+    console.log('Location in the login page', location);
 
 
     const handleSignUp = e => {
@@ -48,21 +52,34 @@ const SignUp = () => {
         }
 
         createUser(email, password)
-            .then(() => {
-                setUserName(name)
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'Account Created Successfully',
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-                logOut()
-                    .then(result => {
-                        console.log(result.user)
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                updateUserprofile(name, photo)
+                    .then(() => {
+                        console.log('User Profile Info Updated')
+
+                        // Create user entry in the database
+                        const userInfo = {
+                            name: name,
+                            email: email,
+                        }
+                        axiosPublic.post('/users', userInfo)
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                    console.log('User added to the database')
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'success',
+                                        title: 'Account Created Successfully',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
+                                    navigate('/login');
+                                }
+                            })
                     })
-                    .catch(() => { })
-                navigate('/login');
+                    .catch(error => console.log(error))
             })
             .catch(() => {
                 Swal.fire({
@@ -73,20 +90,6 @@ const SignUp = () => {
                     timer: 1500
                 });
             })
-    }
-
-
-
-    const handleGoogleSignUp = () => {
-        googleSignUp()
-            .then(result => {
-                console.log(result.user);
-                navigate('/');
-            })
-            .catch(error => {
-                console.error(error);
-            })
-
     }
 
 
@@ -162,10 +165,7 @@ const SignUp = () => {
                             <button className="btn bg-[#03a9fc] border-[#03a9fc] hover:bg-white hover:text-[#03a9fc] text-white font-bold">Sign Up</button>
                         </div>
                         <div>
-                            <button onClick={handleGoogleSignUp} className="btn bg-transparent border-[#03a9fc] mt-5 mb-4 w-full">
-                                <FcGoogle className='text-xs md:text-xl'></FcGoogle>
-                                <span className="text-xs md:text-md">Continue with Google</span>
-                            </button>
+                            <SocialLogin></SocialLogin>
                         </div>
                     </form>
 

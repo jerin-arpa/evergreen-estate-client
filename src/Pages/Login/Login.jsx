@@ -1,11 +1,11 @@
 import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { FcGoogle } from 'react-icons/fc';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { AuthContext } from "../../provider/AuthProvider";
+import SocialLogin from "../../Components/SocialLogin/SocialLogin";
 
 const Login = () => {
-    const { signIn, googleSignUp } = useContext(AuthContext);
+    const { signIn } = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
     console.log('Location in the login page', location);
@@ -29,19 +29,6 @@ const Login = () => {
                 console.error(error);
                 setLoginError('Invalid email or password. Please try again.');
             })
-    }
-
-
-    const handleGoogleSignUp = () => {
-        googleSignUp()
-            .then(result => {
-                console.log(result.user);
-                navigate(location?.state ? location.state : '/');
-            })
-            .catch(error => {
-                console.error(error);
-            })
-
     }
 
 
@@ -87,10 +74,7 @@ const Login = () => {
                         </div>
 
                         <div>
-                            <button onClick={handleGoogleSignUp} className="btn bg-transparent border-[#03a9fc] mt-5 mb-4 w-full">
-                                <FcGoogle className='text-xs md:text-xl'></FcGoogle>
-                                <span className="text-xs md:text-md">Continue with Google</span>
-                            </button>
+                            <SocialLogin></SocialLogin>
                         </div>
                     </form>
 

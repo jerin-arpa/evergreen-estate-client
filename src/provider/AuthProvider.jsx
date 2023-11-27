@@ -1,7 +1,6 @@
-import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
+import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import PropTypes from 'prop-types';
 import { createContext, useEffect, useState } from 'react';
-import { updateProfile } from 'firebase/auth';
 import auth from '../firebase/firebase.config';
 
 
@@ -20,20 +19,6 @@ const AuthProvider = ({ children }) => {
     }
 
 
-    const setUserName = (name) => {
-        setLoading(true);
-        updateProfile(auth.currentUser, {
-            displayName: name
-        })
-            .then(() => {
-                console.log('Display name updated successfully');
-            })
-            .catch(error => {
-                console.error('Error updating display name:', error);
-            });
-    }
-
-
     const signIn = (email, password) => {
         setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
@@ -48,6 +33,13 @@ const AuthProvider = ({ children }) => {
     const logOut = () => {
         setLoading(true);
         return signOut(auth);
+    }
+
+
+    const updateUserprofile = (name, photo) => {
+        return updateProfile(auth.currentUser, {
+            displayName: name, photoURL: photo
+        });
     }
 
 
@@ -70,7 +62,7 @@ const AuthProvider = ({ children }) => {
         googleSignUp,
         logOut,
         signIn,
-        setUserName,
+        updateUserprofile,
     };
 
     return (
