@@ -15,6 +15,7 @@ import AllProperties from "../Pages/HomePage/AllProperties/AllProperties";
 import PropertyDetails from "../Pages/PropertyDetails/PropertyDetails";
 import Wishlist from "../Pages/Dashboard/User/Wishlist/Wishlist";
 import Profile from "../Components/Profile/Profile";
+import ManageReview from "../Pages/Dashboard/Admin/ManageReview";
 
 
 const router = createBrowserRouter([
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
             {
                 path: 'manageUsers',
                 element: <ManageUser></ManageUser>,
+            },
+            {
+                path: 'manageReviews',
+                element: <ManageReview></ManageReview>,
             },
 
             // user Route

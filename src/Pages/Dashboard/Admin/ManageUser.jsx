@@ -9,6 +9,7 @@ import Swal from "sweetalert2";
 
 const ManageUser = () => {
     const axiosSecure = UseAxiosSecure();
+
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
@@ -112,14 +113,16 @@ const ManageUser = () => {
         });
     }
 
+
+
     return (
         <div>
             <div className="mb-10 container mx-auto px-5">
                 <div className="flex items-center justify-center">
-                    <h2 className="text-5xl font-bold text-center my-10">Total Users: {users.length}</h2>
+                    <h2 className="text-5xl font-bold text-center mt-10 mb-5">TOTAL USERS: {users.length}</h2>
                 </div>
 
-
+                <div className="divider mb-10"></div>
 
                 <div className="overflow-x-auto rounded-xl shadow-2xl">
                     <table className="table">

@@ -48,15 +48,15 @@ const WishlistCard = ({ card, myWishlist, setMyWishlist }) => {
 
     return (
         <div>
-            <div className="mb-5 border rounded-xl">
+            <div className="mb-5 rounded-xl shadow-xl">
                 <div>
                     <div className="col-span-1">
                         <img className="w-full h-full" src={propertyImage} alt="" />
                     </div>
-                    <div className="flex items-center col-span-3 pt-5 lg:pl-5 lg:pt-0 ">
+                    <div className="flex items-center col-span-3 p-5 ">
                         <div>
-                            <div className='md:h-48'>
-                                <p className='text-2xl text-[#03a9fc] font-bold mb-5'>{propertyTitle}</p>
+                            <div className='md:h-44'>
+                                <p className='text-2xl text-[#03a9fc] font-bold '>{propertyTitle}</p>
 
                                 <p className='text-lg mt-2'><span className='font-bold'>Price:</span> ${priceRange}</p>
 

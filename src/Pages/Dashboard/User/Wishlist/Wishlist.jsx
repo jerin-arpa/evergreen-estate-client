@@ -18,12 +18,14 @@ const Wishlist = () => {
 
     return (
         <div>
-            <div className=" bg-slate-100 h-[200px] flex items-center justify-center">
+            <div className="flex items-center justify-center my-10">
                 <h2 className="text-5xl font-bold text-center">My Wishlist</h2>
             </div>
 
+            <div className="divider mb-10"></div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-20 mx-10">
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mx-10">
                 {
                     myWishlist.length === 0 ? <div className="col-span-3 flex justify-center">
                         <div>

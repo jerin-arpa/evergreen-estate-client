@@ -11,23 +11,39 @@ const Profile = () => {
 
     return (
         <div>
-            <div className=" bg-slate-100 h-[200px] flex items-center justify-center">
-                <h2 className="text-5xl font-bold text-center">Profile</h2>
+            <div className="flex items-center justify-center my-10">
+                {
+                    isAdmin && <h2 className="text-5xl font-bold text-center uppercase">Admin Profile</h2>
+                }
+                {
+                    isAgent && <h2 className="text-5xl font-bold text-center uppercase">Agent Profile</h2>
+                }
+                {
+                    !isAgent && !isAdmin && <h2 className="text-5xl font-bold text-center uppercase">User Profile</h2>
+                }
             </div>
 
-            <div className="container mx-auto px-5 mt-10 flex flex-col md:flex-row gap-5">
-                <img className="h-44 w-44 rounded-full" src={user.photoURL} alt="" />
-                <div className="flex items-center">
-                    <div>
-                        <h2 className="text-2xl font-bold uppercase">{user.displayName}</h2>
-                        <p>{user.email}</p>
+            <div className="divider mb-10"></div>
 
-                        {
-                            isAdmin && <p><span className="font-bold">Role: Admin</span> </p>
-                        }
-                        {
-                            isAgent && <p><span className="font-bold">Role: Agent</span> </p>
-                        }
+            <div className="shadow-xl rounded-xl p-10">
+                <div className="flex justify-center">
+                    <img className="h-44 w-44 rounded-full" src={user.photoURL} alt="" />
+                </div>
+                <div className="flex justify-center">
+                    <div>
+                        <h2 className="text-4xl font-bold uppercase text-center mt-6">{user.displayName}</h2>
+                        <p className="text-xl font-bold text-center">{user.email}</p>
+
+                        <div className="flex justify-center mt-3">
+                            {
+                                isAdmin && <p><span className="font-bold text-center text-3xl text-[#03a9fc]">Role: Admin</span> </p>
+                            }
+                        </div>
+                        <div className="flex justify-center mt-3">
+                            {
+                                isAgent && <p><span className="font-bold text-center text-3xl text-[#03a9fc]">Role: Agent</span> </p>
+                            }
+                        </div>
                     </div>
                 </div>
             </div>

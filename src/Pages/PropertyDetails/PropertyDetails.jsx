@@ -46,10 +46,8 @@ const PropertyDetails = () => {
             })
     }, []);
 
-    console.log('Before review', reviews);
 
     const review = reviews.filter(item => item.property._id === property._id);
-    console.log('Review has been done', review);
 
 
 
@@ -73,7 +71,7 @@ const PropertyDetails = () => {
     }
 
 
-    const handleAddReview = event => {
+    const handleAddReview = (event) => {
         event.preventDefault();
         const reviewDescription = event.target.writeReview.value;
         console.log(reviewDescription);

@@ -20,7 +20,7 @@ const PropertyCard = ({ property }) => {
         <div className='rounded-xl shadow-xl'>
             <img data-aos="fade-down" data-aos-duration="3000" className='w-full h-64 rounded-t-xl' src={propertyImage} alt="" />
             <div data-aos="fade-up" data-aos-duration="3000" className='p-5 pb-8'>
-                <div className='md:h-[180px]'>
+                <div className='md:h-[150px]'>
                     <h2 className='text-2xl font-bold mb-2'>{propertyTitle}</h2>
                     <div className='flex gap-2 text-lg'>
                         <div className='flex items-center text-[#03a9fc]'>
