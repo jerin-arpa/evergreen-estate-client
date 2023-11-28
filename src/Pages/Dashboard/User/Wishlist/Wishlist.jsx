@@ -19,7 +19,7 @@ const Wishlist = () => {
     return (
         <div>
             <div className="flex items-center justify-center my-10">
-                <h2 className="text-5xl font-bold text-center">My Wishlist</h2>
+                <h2 className="text-5xl font-bold text-center uppercase">My Wishlist</h2>
             </div>
 
             <div className="divider mb-10"></div>

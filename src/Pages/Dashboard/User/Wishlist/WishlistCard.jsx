@@ -7,10 +7,6 @@ const WishlistCard = ({ card, myWishlist, setMyWishlist }) => {
     const { propertyImage, propertyTitle, location, agentName, agentImage, status, priceRange } = card.property;
     const { _id } = card;
 
-    const handleMakeOffer = _id => {
-        console.log(_id)
-    }
-
     const handleDelete = _id => {
         console.log(_id);
         Swal.fire({
@@ -84,7 +80,7 @@ const WishlistCard = ({ card, myWishlist, setMyWishlist }) => {
                             </div>
 
                             <div className='my-5 flex gap-5 w-full'>
-                                <button onClick={() => handleMakeOffer(_id)} className="btn bg-[#03a9fc] border-[#03a9fc] hover:bg-white hover:text-[#03a9fc] text-white hover:border-[#03a9fc]">Make An Offer</button>
+                                <button className="btn bg-[#03a9fc] border-[#03a9fc] hover:bg-white hover:text-[#03a9fc] text-white hover:border-[#03a9fc]">Make An Offer</button>
 
                                 <button onClick={() => handleDelete(_id)} className="btn bg-red-500 border-red-500 hover:bg-white hover:text-red-500 text-white hover:border-red-500">Remove</button>
                             </div>

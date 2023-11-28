@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import UseAdmin from "../../hooks/useAdmin";
 import UseAgent from "../../hooks/useAgent";
+import { FaUserCircle } from "react-icons/fa";
 
 
 const Profile = () => {
@@ -27,11 +28,19 @@ const Profile = () => {
 
             <div className="shadow-xl rounded-xl p-10">
                 <div className="flex justify-center">
-                    <img className="h-44 w-44 rounded-full" src={user.photoURL} alt="" />
+                    {
+                        user.photoURL ? (
+                            <img className="w-8 md:w-44 md:h-44 rounded-full" src={user.photoURL} alt="" />
+                        ) : (
+                            <FaUserCircle className="text-4xl  md:text-[140px]">
+                            </FaUserCircle>
+                        )
+                    }
                 </div>
                 <div className="flex justify-center">
                     <div>
                         <h2 className="text-4xl font-bold uppercase text-center mt-6">{user.displayName}</h2>
+
                         <p className="text-xl font-bold text-center">{user.email}</p>
 
                         <div className="flex justify-center mt-3">

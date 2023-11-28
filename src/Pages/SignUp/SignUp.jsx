@@ -140,7 +140,7 @@ const SignUp = () => {
                             <label className="label">
                                 <span className="label-text">Photo URL</span>
                             </label>
-                            <input type="text" name="photo" placeholder="Enter your photo url" className="input input-bordered" required />
+                            <input type="text" name="photo" placeholder="Enter your photo url" className="input input-bordered" />
                         </div>
 
                         <div className="flex gap-3 mt-5">

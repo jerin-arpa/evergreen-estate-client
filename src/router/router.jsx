@@ -16,6 +16,7 @@ import PropertyDetails from "../Pages/PropertyDetails/PropertyDetails";
 import Wishlist from "../Pages/Dashboard/User/Wishlist/Wishlist";
 import Profile from "../Components/Profile/Profile";
 import ManageReview from "../Pages/Dashboard/Admin/ManageReview";
+import MyReview from "../Pages/Dashboard/User/MyReview/MyReview";
 
 
 const router = createBrowserRouter([
@@ -86,6 +87,10 @@ const router = createBrowserRouter([
                 path: 'wishlist',
                 element: <Wishlist></Wishlist>,
                 loader: () => fetch('http://localhost:5000/wishlist'),
+            },
+            {
+                path: 'myReviews',
+                element: <MyReview></MyReview>,
             }
         ]
     }
