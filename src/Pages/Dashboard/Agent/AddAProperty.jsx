@@ -68,7 +68,7 @@ const AddAProperty = () => {
                         <h2 className="text-4xl font-bold text-center pb-5"><span>ADD</span> <span className="text-[#03a9fc]">A PROPERTY</span></h2>
                         <hr className="my-5" />
 
-                        {/* Food Information */}
+                        {/* Property Information */}
                         <h2 className="text-xl font-bold pb-1">Property INFORMATION</h2>
                         <div>
                             <hr className="w-1/5 h-2 bg-[#03a9fc] mb-5" />

@@ -17,8 +17,10 @@ const MyReview = () => {
         },
     });
 
-    const review = reviewData.filter(item => item.userEmail.toLowerCase() === user?.email.toLowerCase());
-    console.log(review)
+    console.log(reviewData)
+    const review = reviewData ? reviewData.filter(item => item.userEmail.toLowerCase() === user?.email.toLowerCase()) : [];
+
+    console.log(review);
 
     const handleDelete = _id => {
         console.log(_id);

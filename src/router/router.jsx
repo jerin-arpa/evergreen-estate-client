@@ -18,6 +18,9 @@ import Profile from "../Components/Profile/Profile";
 import ManageReview from "../Pages/Dashboard/Admin/ManageReview";
 import MyReview from "../Pages/Dashboard/User/MyReview/MyReview";
 import AdminRoute from "./AdminRoute";
+import MakeOffer from "../Pages/Dashboard/User/MakeOffer/MakeOffer";
+import PropertyBought from "../Pages/Dashboard/User/PropertyBought";
+
 
 
 const router = createBrowserRouter([
@@ -65,6 +68,10 @@ const router = createBrowserRouter([
         path: 'dashboard',
         element: <PrivateRoute><DashboardRoute></DashboardRoute></PrivateRoute>,
         children: [
+            {
+                path: 'profile',
+                element: <Profile></Profile>,
+            },
             // Admin Route
             {
                 path: 'manageProperties',
@@ -81,10 +88,6 @@ const router = createBrowserRouter([
 
             // user Route
             {
-                path: 'profile',
-                element: <Profile></Profile>,
-            },
-            {
                 path: 'wishlist',
                 element: <Wishlist></Wishlist>,
                 loader: () => fetch('http://localhost:5000/wishlist'),
@@ -92,7 +95,16 @@ const router = createBrowserRouter([
             {
                 path: 'myReviews',
                 element: <MyReview></MyReview>,
-            }
+            },
+            {
+                path: 'makeOffer/:id',
+                element: <MakeOffer></MakeOffer>,
+                loader: () => fetch('http://localhost:5000/wishlist')
+            },
+            {
+                path: 'propertyBought',
+                element: <PropertyBought></PropertyBought>,
+            },
         ]
     }
 ]);

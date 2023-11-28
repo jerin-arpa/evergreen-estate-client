@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { FaUserCircle } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const WishlistCard = ({ card, myWishlist, setMyWishlist }) => {
@@ -80,7 +81,9 @@ const WishlistCard = ({ card, myWishlist, setMyWishlist }) => {
                             </div>
 
                             <div className='my-5 flex gap-5 w-full'>
-                                <button className="btn bg-[#03a9fc] border-[#03a9fc] hover:bg-white hover:text-[#03a9fc] text-white hover:border-[#03a9fc]">Make An Offer</button>
+                                <Link to={`/dashboard/makeOffer/${_id}`}>
+                                    <button className="btn bg-[#03a9fc] border-[#03a9fc] hover:bg-white hover:text-[#03a9fc] text-white hover:border-[#03a9fc]">Make An Offer</button>
+                                </Link>
 
                                 <button onClick={() => handleDelete(_id)} className="btn bg-red-500 border-red-500 hover:bg-white hover:text-red-500 text-white hover:border-red-500">Remove</button>
                             </div>
