@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import { useContext } from "react";
-import UseAdmin from "../hooks/UseAdmin";
 import { AuthContext } from "../provider/AuthProvider";
 import { Navigate, useLocation } from "react-router-dom";
+import UseAdmin from '../hooks/useAdmin';
 
 
 const AdminRoute = ({ children }) => {

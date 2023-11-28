@@ -17,6 +17,7 @@ import Wishlist from "../Pages/Dashboard/User/Wishlist/Wishlist";
 import Profile from "../Components/Profile/Profile";
 import ManageReview from "../Pages/Dashboard/Admin/ManageReview";
 import MyReview from "../Pages/Dashboard/User/MyReview/MyReview";
+import AdminRoute from "./AdminRoute";
 
 
 const router = createBrowserRouter([
@@ -67,15 +68,15 @@ const router = createBrowserRouter([
             // Admin Route
             {
                 path: 'manageProperties',
-                element: <ManageProperties></ManageProperties>,
+                element: <AdminRoute><ManageProperties></ManageProperties></AdminRoute>,
             },
             {
                 path: 'manageUsers',
-                element: <ManageUser></ManageUser>,
+                element: <AdminRoute><ManageUser></ManageUser></AdminRoute>,
             },
             {
                 path: 'manageReviews',
-                element: <ManageReview></ManageReview>,
+                element: <AdminRoute><ManageReview></ManageReview></AdminRoute>,
             },
 
             // user Route
