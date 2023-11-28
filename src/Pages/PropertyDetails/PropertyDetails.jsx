@@ -12,8 +12,8 @@ import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
 import { MdOutlineReviews, MdOutlineSupportAgent } from "react-icons/md";
 import { IoTime } from "react-icons/io5";
-import UseAxiosSecure from "../../hooks/useAxiosSecure";
 import useWishlist from "../../hooks/useWishlist";
+import UseAxiosSecure from "../../hooks/UseAxiosSecure";
 
 
 const PropertyDetails = () => {

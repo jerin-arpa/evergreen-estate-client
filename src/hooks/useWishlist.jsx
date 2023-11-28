@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
-import UseAxiosSecure from "./useAxiosSecure";
+import UseAxiosSecure from "./UseAxiosSecure";
 
 const useWishlist = () => {
     const axiosSecure = UseAxiosSecure();

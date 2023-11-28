@@ -1,8 +1,9 @@
-// import { useContext } from "react";
-// import { AuthContext } from "../../../provider/AuthProvider";
 import { useLoaderData } from "react-router-dom";
 import { BsFillEmojiSmileFill } from "react-icons/bs";
 import WishlistCard from "./WishlistCard";
+import { useState } from "react";
+// import { useContext } from "react";
+// import { AuthContext } from "../../../../provider/AuthProvider";
 
 
 const Wishlist = () => {
@@ -11,8 +12,8 @@ const Wishlist = () => {
     const wishlist = useLoaderData();
 
     console.log(wishlist);
-    // const userWishlist = wishlist.filter(item => item.userEmail.toLowerCase() === user.email.toLowerCase());
-    // const [myWishlist, setMyWishlist] = useState(userWishlist);
+    // const userWishlist = wishlist.filter(item => item.userEmail.toLowerCase() === user?.email.toLowerCase());
+    const [myWishlist, setMyWishlist] = useState(wishlist);
 
 
     return (
@@ -37,6 +38,8 @@ const Wishlist = () => {
                         wishlist.map(card => <WishlistCard
                             key={card._id}
                             card={card}
+                            myWishlist={myWishlist}
+                            setMyWishlist={setMyWishlist}
                         ></WishlistCard>)
                 }
             </div>

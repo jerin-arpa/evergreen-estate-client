@@ -2,9 +2,10 @@ import PropTypes from 'prop-types';
 import { FaUserCircle } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 
-const WishlistCard = ({ card }) => {
+const WishlistCard = ({ card, myWishlist, setMyWishlist }) => {
 
-    const { _id, propertyImage, propertyTitle, location, agentName, agentImage, status, priceRange } = card.property;
+    const { propertyImage, propertyTitle, location, agentName, agentImage, status, priceRange } = card.property;
+    const { _id } = card;
 
     const handleMakeOffer = _id => {
         console.log(_id)
@@ -32,11 +33,11 @@ const WishlistCard = ({ card }) => {
                             if (data.deletedCount > 0) {
                                 Swal.fire(
                                     'Deleted!',
-                                    'Your product has been deleted.',
+                                    'Your property has been deleted.',
                                     'success'
                                 )
-                                // const remaining = myCart.filter(card => card._id !== _id)
-                                // setMyCart(remaining);
+                                const remaining = myWishlist.filter(request => request._id !== _id)
+                                setMyWishlist(remaining);
                             }
                         })
                 }
@@ -97,6 +98,8 @@ const WishlistCard = ({ card }) => {
 
 WishlistCard.propTypes = {
     card: PropTypes.object,
+    myWishlist: PropTypes.array,
+    setMyWishlist: PropTypes.func,
 };
 
 export default WishlistCard;

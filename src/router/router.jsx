@@ -8,13 +8,13 @@ import About from "../Pages/About/About";
 import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import DashboardRoute from "../Layout/DashboardRoute/DashboardRoute";
-import AdminProfile from "../Pages/Dashboard/Admin/AdminProfile";
 import ManageProperties from "../Pages/Dashboard/Admin/ManageProperties";
 import ManageUser from "../Pages/Dashboard/Admin/ManageUser";
 import AddAProperty from "../Pages/Dashboard/Agent/AddAProperty";
 import AllProperties from "../Pages/HomePage/AllProperties/AllProperties";
 import PropertyDetails from "../Pages/PropertyDetails/PropertyDetails";
 import Wishlist from "../Pages/Dashboard/User/Wishlist/Wishlist";
+import Profile from "../Components/Profile/Profile";
 
 
 const router = createBrowserRouter([
@@ -64,10 +64,6 @@ const router = createBrowserRouter([
         children: [
             // Admin Route
             {
-                path: 'adminProfile',
-                element: <AdminProfile></AdminProfile>,
-            },
-            {
                 path: 'manageProperties',
                 element: <ManageProperties></ManageProperties>,
             },
@@ -77,6 +73,10 @@ const router = createBrowserRouter([
             },
 
             // user Route
+            {
+                path: 'profile',
+                element: <Profile></Profile>,
+            },
             {
                 path: 'wishlist',
                 element: <Wishlist></Wishlist>,
