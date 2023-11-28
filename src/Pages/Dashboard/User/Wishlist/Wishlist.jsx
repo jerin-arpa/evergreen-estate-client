@@ -2,18 +2,18 @@ import { useLoaderData } from "react-router-dom";
 import { BsFillEmojiSmileFill } from "react-icons/bs";
 import WishlistCard from "./WishlistCard";
 import { useState } from "react";
-// import { useContext } from "react";
-// import { AuthContext } from "../../../../provider/AuthProvider";
+import { useContext } from "react";
+import { AuthContext } from "../../../../provider/AuthProvider";
 
 
 const Wishlist = () => {
 
-    // const { user } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const wishlist = useLoaderData();
 
     console.log(wishlist);
-    // const userWishlist = wishlist.filter(item => item.userEmail.toLowerCase() === user?.email.toLowerCase());
-    const [myWishlist, setMyWishlist] = useState(wishlist);
+    const userWishlist = wishlist.filter(item => item.userEmail.toLowerCase() === user?.email.toLowerCase());
+    const [myWishlist, setMyWishlist] = useState(userWishlist);
 
 
     return (
@@ -25,7 +25,7 @@ const Wishlist = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-20 mx-10">
                 {
-                    wishlist.length === 0 ? <div className="col-span-2 flex justify-center">
+                    myWishlist.length === 0 ? <div className="col-span-3 flex justify-center">
                         <div>
                             <div className="flex justify-center">
                                 <BsFillEmojiSmileFill className="text-9xl text-[#ffcc33] mb-5"></BsFillEmojiSmileFill>
@@ -35,7 +35,7 @@ const Wishlist = () => {
                         </div>
                     </div>
                         :
-                        wishlist.map(card => <WishlistCard
+                        myWishlist.map(card => <WishlistCard
                             key={card._id}
                             card={card}
                             myWishlist={myWishlist}

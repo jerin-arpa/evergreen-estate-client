@@ -1,22 +1,16 @@
 import { FaHome, FaUser, FaUsers } from "react-icons/fa";
 import { MdOutlineMenu, MdRealEstateAgent, MdReviews } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
+import UseAdmin from "../../hooks/useAdmin";
+import UseAgent from "../../hooks/useAgent";
 
 
 const DashboardRoute = () => {
 
-    const isAdmin = true;
+    const [isAdmin] = UseAdmin();
+    const [isAgent] = UseAgent();
 
     const navLink = <>
-        {/* Shared NavLink */}
-        <li className="text-xl">
-            <NavLink to="/">
-                <FaHome></FaHome>Home</NavLink>
-        </li>
-        <li className="text-xl">
-            <NavLink to="/allProperties">
-                <MdOutlineMenu></MdOutlineMenu>All Properties</NavLink>
-        </li>
 
         <li className="text-xl">
             <NavLink to="/dashboard/profile">
@@ -24,10 +18,9 @@ const DashboardRoute = () => {
         </li>
 
 
-
         {/* Admin Dashboard */}
         {
-            isAdmin ? <>
+            isAdmin && <>
                 <li className="text-xl">
                     <NavLink to="/dashboard/manageProperties">
                         <MdRealEstateAgent></MdRealEstateAgent> Manage Properties</NavLink>
@@ -41,7 +34,30 @@ const DashboardRoute = () => {
                         <MdReviews></MdReviews>
                         Manage Reviews</NavLink>
                 </li>
-            </> : <>
+            </>
+        }
+
+        {
+            isAgent && <>
+                {/* Agent Dashboard */}
+                <li className="text-xl">
+                    <NavLink to="/dashboard/addedProperties">
+                        <MdRealEstateAgent></MdRealEstateAgent>My Added Properties</NavLink>
+                </li>
+                <li className="text-xl">
+                    <NavLink to="/dashboard/soldProperties">
+                        <FaUsers></FaUsers> My Sold Properties</NavLink>
+                </li>
+                <li className="text-xl">
+                    <NavLink to="/dashboard/requestProperties">
+                        <MdReviews></MdReviews>
+                        Requested Properties</NavLink>
+                </li>
+            </>
+        }
+
+        {
+            !isAgent && !isAdmin && <>
                 {/* User Dashboard */}
                 <li className="text-xl">
                     <NavLink to="/dashboard/wishlist">
@@ -59,30 +75,19 @@ const DashboardRoute = () => {
             </>
         }
 
-
-
-        {/* Agent Dashboard */}
-        {/* <li className="text-xl">
-            <NavLink to="/dashboard/addedProperties">
-                <MdRealEstateAgent></MdRealEstateAgent>My Added Properties</NavLink>
+        {/* Shared NavLink */}
+        <li className="text-xl">
+            <NavLink to="/">
+                <FaHome></FaHome>Home</NavLink>
         </li>
         <li className="text-xl">
-            <NavLink to="/dashboard/soldProperties">
-                <FaUsers></FaUsers> My Sold Properties</NavLink>
+            <NavLink to="/allProperties">
+                <MdOutlineMenu></MdOutlineMenu>All Properties</NavLink>
         </li>
-        <li className="text-xl">
-            <NavLink to="/dashboard/requestProperties">
-                <MdReviews></MdReviews>
-                Requested Properties</NavLink>
-        </li> */}
-
-
-
-
     </>
 
     return (
-        <div>
+        <div className="">
             <div className="drawer">
                 <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col">

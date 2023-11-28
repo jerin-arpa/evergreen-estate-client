@@ -1,9 +1,14 @@
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
+import UseAdmin from "../../hooks/useAdmin";
+import UseAgent from "../../hooks/useAgent";
 
 
 const Profile = () => {
     const { user } = useContext(AuthContext);
+    const [isAdmin] = UseAdmin();
+    const [isAgent] = UseAgent();
+
     return (
         <div>
             <div className=" bg-slate-100 h-[200px] flex items-center justify-center">
@@ -17,7 +22,12 @@ const Profile = () => {
                         <h2 className="text-2xl font-bold uppercase">{user.displayName}</h2>
                         <p>{user.email}</p>
 
-                        <p><span className="font-bold">Role:</span> {'Admin'}</p>
+                        {
+                            isAdmin && <p><span className="font-bold">Role: Admin</span> </p>
+                        }
+                        {
+                            isAgent && <p><span className="font-bold">Role: Agent</span> </p>
+                        }
                     </div>
                 </div>
             </div>

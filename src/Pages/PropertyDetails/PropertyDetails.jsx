@@ -46,10 +46,10 @@ const PropertyDetails = () => {
             })
     }, []);
 
-    console.log(reviews);
+    console.log('Before review', reviews);
 
-    // const review = reviews.filter(item => item.property.propertyTitle.toLowerCase() === property.propertyTitle.toLowerCase());
-    // console.log(review);
+    const review = reviews.filter(item => item.property._id === property._id);
+    console.log('Review has been done', review);
 
 
 
@@ -240,7 +240,7 @@ const PropertyDetails = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-10 mb-10">
                     {
-                        reviews.map(review => <div key={review._id} className="border-4 border-[#03a9fc] p-7 rounded-xl ">
+                        review.map(review => <div key={review._id} className="border-4 border-[#03a9fc] p-7 rounded-xl ">
                             <div className='flex gap-3 h-14'>
                                 <div>
                                     {
