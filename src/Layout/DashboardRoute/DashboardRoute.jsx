@@ -8,6 +8,15 @@ const DashboardRoute = () => {
     const isAdmin = true;
 
     const navLink = <>
+        {/* Shared NavLink */}
+        <li className="text-xl">
+            <NavLink to="/">
+                <FaHome></FaHome>Home</NavLink>
+        </li>
+        <li className="text-xl">
+            <NavLink to="/allProperties">
+                <MdOutlineMenu></MdOutlineMenu>All Properties</NavLink>
+        </li>
 
         <li className="text-xl">
             <NavLink to="/dashboard/profile">
@@ -68,15 +77,7 @@ const DashboardRoute = () => {
         </li> */}
 
 
-        {/* Shared NavLink */}
-        <li className="text-xl">
-            <NavLink to="/">
-                <FaHome></FaHome>Home</NavLink>
-        </li>
-        <li className="text-xl">
-            <NavLink to="/allProperties">
-                <MdOutlineMenu></MdOutlineMenu>All Properties</NavLink>
-        </li>
+
 
     </>
 
