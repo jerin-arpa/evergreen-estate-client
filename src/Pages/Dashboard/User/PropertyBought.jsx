@@ -67,7 +67,9 @@ const PropertyBought = () => {
                                         </div>
 
                                         <div className='my-5 flex gap-5 w-full'>
-                                            <button className="btn w-full bg-[#03a9fc] border-[#03a9fc] hover:bg-white hover:text-[#03a9fc] text-white hover:border-[#03a9fc]">PAY</button>
+                                            {
+                                                card.status === 'Accepted' ? (<button className="btn w-full bg-[#03a9fc] border-[#03a9fc] hover:bg-white hover:text-[#03a9fc] text-white hover:border-[#03a9fc]">PAY</button>) : (<button disabled className="btn w-full bg-[#03a9fc] border-[#03a9fc] hover:bg-white hover:text-[#03a9fc] text-white hover:border-[#03a9fc]">PAY</button>)
+                                            }
                                         </div>
                                     </div>
                                 </div>

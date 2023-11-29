@@ -100,13 +100,13 @@ const ManageProperties = () => {
                                 }
 
                                 <td>
-                                    <button disabled={row.status !== 'pending'} onClick={() => handleVerify(row)}
+                                    <button disabled={row.status !== 'Pending'} onClick={() => handleVerify(row)}
                                         className="btn w-full bg-green-600 border-green-600 hover:bg-white hover:text-green-600 text-white hover:border-green-600">
                                         Verify
                                     </button>
                                 </td>
                                 <td>
-                                    <button disabled={row.status !== 'pending'} onClick={() => handleReject(row)}
+                                    <button disabled={row.status !== 'Pending'} onClick={() => handleReject(row)}
                                         className="btn w-full bg-red-500 border-red-500 hover:bg-white hover:text-red-500 text-white hover:border-red-500">
                                         Reject
                                     </button>
