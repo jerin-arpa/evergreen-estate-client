@@ -22,7 +22,7 @@ const Payment = () => {
             <div className="divider mb-10"></div>
 
             <div className="flex justify-center mb-20">
-                <div className=" mt-10 md:w-1/2  shadow-2xl p-14">
+                <div className=" mt-10 md:w-1/2 border border-[#03a9fc] rounded-xl shadow-2xl p-14">
                     <Elements stripe={stripePromise}>
                         <CheckoutForm></CheckoutForm>
                     </Elements>

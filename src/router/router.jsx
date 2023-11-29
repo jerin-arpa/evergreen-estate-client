@@ -24,7 +24,7 @@ import SoldProperties from "../Pages/Dashboard/Agent/SoldProperties";
 import UpdateProperty from "../Pages/Dashboard/Agent/AddedProperty/UpdateProperty";
 import RequestedProperties from "../Pages/Dashboard/Agent/RequestProperty/RequestedProperties";
 import PropertyBought from "../Pages/Dashboard/User/PropertyBought/PropertyBought";
-// import Payment from "../Pages/Dashboard/User/PropertyBought/Payment";
+import Payment from "../Pages/Dashboard/User/PropertyBought/Payment";
 
 
 
@@ -131,10 +131,11 @@ const router = createBrowserRouter([
                 path: 'propertyBought',
                 element: <PropertyBought></PropertyBought>,
             },
-            // {
-            //     path: 'payment',
-            //     element: <Payment></Payment>
-            // }
+            {
+                path: 'payment/:id',
+                element: <Payment></Payment>,
+                loader: () => fetch('http://localhost:5000/offeredAmount')
+            }
         ]
     }
 ]);

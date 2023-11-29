@@ -43,7 +43,7 @@ const PropertyBought = () => {
                                 <BsFillEmojiSmileFill className="text-9xl text-[#ffcc33] mb-5"></BsFillEmojiSmileFill>
                             </div>
                             <h2 className="
-                         text-4xl font-bold text-[#03a9fc] text-center"> There are currently <br /> no products added to the Wishlist. </h2>
+                         text-4xl font-bold text-[#03a9fc] text-center"> There are currently <br /> no Property Bought By You. </h2>
                         </div>
                     </div>
                         :
@@ -73,7 +73,7 @@ const PropertyBought = () => {
 
                                     <div className='mt-10 flex gap-5 w-full'>
                                         {
-                                            card.status === 'Accepted' ? (<Link className="w-full" to='/dashboard/payment'>
+                                            card.status === 'Accepted' ? (<Link className="w-full" to={`/dashboard/payment/${card._id}`}>
                                                 <button className="btn w-full bg-[#03a9fc] border-[#03a9fc] hover:bg-white hover:text-[#03a9fc] text-white hover:border-[#03a9fc]">PAY</button>
                                             </Link>) : (<button disabled className="btn w-full bg-[#03a9fc] border-[#03a9fc] hover:bg-white hover:text-[#03a9fc] text-white hover:border-[#03a9fc]">PAY</button>)
                                         }
