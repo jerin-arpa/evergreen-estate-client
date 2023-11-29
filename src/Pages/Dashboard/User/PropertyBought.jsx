@@ -48,7 +48,7 @@ const PropertyBought = () => {
                                 </div>
                                 <div className="flex items-center col-span-3 p-5 ">
                                     <div>
-                                        <div className='md:h-44'>
+                                        <div className='md:h-48'>
                                             <p className='text-2xl text-[#03a9fc] font-bold '>{card.propertyTitle}</p>
 
                                             <p className='text-xl mt-2 mb-2'><span className='font-bold'>Agent Name:</span> {card.agentName}</p>
@@ -57,7 +57,13 @@ const PropertyBought = () => {
 
                                             <p className='text-lg'><span className='font-bold'>Location:</span> {card.location}</p>
 
-                                            <p className='text-lg'><span className='font-bold'>Verification Status:</span> {card.status}</p>
+                                            <p className='text-lg'><span className='font-bold'>Verification Status:</span>
+                                                {card.status === 'Pending' && <span className="text-warning"> {card.status}</span>}
+
+                                                {card.status === 'Accepted' && <span className="text-green-500"> {card.status}</span>}
+
+                                                {card.status === 'Rejected' && <span className="text-red-600"> {card.status}</span>}
+                                            </p>
                                         </div>
 
                                         <div className='my-5 flex gap-5 w-full'>

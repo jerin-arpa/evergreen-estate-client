@@ -22,8 +22,8 @@ import PropertyBought from "../Pages/Dashboard/User/PropertyBought";
 import AddAProperty from "../Pages/Dashboard/Agent/AddAProperty";
 import AddedProperties from "../Pages/Dashboard/Agent/AddedProperty/AddedProperties";
 import SoldProperties from "../Pages/Dashboard/Agent/SoldProperties";
-import RequestedProperties from "../Pages/Dashboard/Agent/RequestedProperties";
 import UpdateProperty from "../Pages/Dashboard/Agent/AddedProperty/UpdateProperty";
+import RequestedProperties from "../Pages/Dashboard/Agent/RequestProperty/RequestedProperties";
 
 
 

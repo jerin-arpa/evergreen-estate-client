@@ -1,23 +1,24 @@
-import UseAxiosSecure from "../../../hooks/UseAxiosSecure";
 import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
+import UseAxiosSecure from "../../../../hooks/UseAxiosSecure";
 
 
 
-const ManageProperties = () => {
+const RequestedProperties = () => {
     const axiosSecure = UseAxiosSecure();
     const { data: property = [], refetch } = useQuery({
-        queryKey: ['properties'],
+        queryKey: ['offeredAmount'],
         queryFn: async () => {
-            const res = await axiosSecure.get('/properties');
+            const res = await axiosSecure.get('/offeredAmount');
             return res.data;
         },
     });
+    console.log(property)
 
 
-    const handleVerify = row => {
+    const handleAccepted = row => {
         console.log(row)
-        axiosSecure.patch(`/properties/verify/${row._id}`)
+        axiosSecure.patch(`/offeredAmount/accepted/${row._id}`)
             .then(res => {
                 console.log(res.data)
                 if (res.data.modifiedCount > 0) {
@@ -36,7 +37,7 @@ const ManageProperties = () => {
 
     const handleReject = row => {
         console.log(row)
-        axiosSecure.patch(`/properties/reject/${row._id}`)
+        axiosSecure.patch(`/offeredAmount/reject/${row._id}`)
             .then(res => {
                 console.log(res.data)
                 if (res.data.modifiedCount > 0) {
@@ -56,7 +57,7 @@ const ManageProperties = () => {
     return (
         <div>
             <div className="flex items-center justify-center">
-                <h2 className="text-5xl font-bold text-center mt-10 mb-5">MANAGE PROPERTY</h2>
+                <h2 className="text-5xl font-bold text-center mt-10 mb-5">REQUESTED PROPERTY</h2>
             </div>
 
             <div className="divider mb-10"></div>
@@ -70,9 +71,9 @@ const ManageProperties = () => {
                             <th></th>
                             <th>Property Title</th>
                             <th>Location</th>
-                            <th>Agent Name</th>
-                            <th>Agent Email</th>
-                            <th>Price Range</th>
+                            <th>Buyer Name</th>
+                            <th>Buyer Email</th>
+                            <th>Offered Price</th>
                             <th>Status</th>
                             <th>Action</th>
                             <th>Action</th>
@@ -85,28 +86,28 @@ const ManageProperties = () => {
 
                                 <td className="font-bold">{row.propertyTitle}</td>
                                 <td className="font-bold">{row.location}</td>
-                                <td className="font-bold">{row.agentName}</td>
+                                <td className="font-bold">{row.buyerName}</td>
                                 <td className="font-bold">{row.email}</td>
-                                <td className="font-bold">{row.priceRange}</td>
+                                <td className="font-bold">${row.offeredAmount}</td>
 
                                 {
                                     row.status === 'Pending' && <td className="font-bold text-warning">{row.status}</td>
                                 }
                                 {
-                                    row.status === 'Verified' && <td className="font-bold text-green-500">{row.status}</td>
+                                    row.status === 'Accepted' && <td className="font-bold text-green-500">{row.status}</td>
                                 }
                                 {
                                     row.status === 'Rejected' && <td className="font-bold text-red-500">{row.status}</td>
                                 }
 
                                 <td>
-                                    <button disabled={row.status !== 'pending'} onClick={() => handleVerify(row)}
+                                    <button disabled={row.status !== 'Pending'} onClick={() => handleAccepted(row)}
                                         className="btn w-full bg-green-600 border-green-600 hover:bg-white hover:text-green-600 text-white hover:border-green-600">
-                                        Verify
+                                        Accept
                                     </button>
                                 </td>
                                 <td>
-                                    <button disabled={row.status !== 'pending'} onClick={() => handleReject(row)}
+                                    <button disabled={row.status !== 'Pending'} onClick={() => handleReject(row)}
                                         className="btn w-full bg-red-500 border-red-500 hover:bg-white hover:text-red-500 text-white hover:border-red-500">
                                         Reject
                                     </button>
@@ -120,4 +121,4 @@ const ManageProperties = () => {
     );
 };
 
-export default ManageProperties;
+export default RequestedProperties;

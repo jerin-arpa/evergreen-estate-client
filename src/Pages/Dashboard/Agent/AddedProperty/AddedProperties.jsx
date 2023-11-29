@@ -28,6 +28,9 @@ const AddedProperties = () => {
             })
     }, [])
 
+    // const addedProperty = properties.filter(item => item.userEmail?.toLowerCase() === user?.email.toLowerCase());
+    // console.log(addedProperty)
+
     const handleDeleteProperty = (id) => {
         console.log(id);
         Swal.fire({
