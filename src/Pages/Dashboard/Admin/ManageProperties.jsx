@@ -87,7 +87,7 @@ const ManageProperties = () => {
                                 <td className="font-bold">{row.location}</td>
                                 <td className="font-bold">{row.agentName}</td>
                                 <td className="font-bold">{row.email}</td>
-                                <td className="font-bold">{row.priceRange}</td>
+                                <td className="font-bold">{`$${row.minPriceRange}-$${row.maxPriceRange}`}</td>
 
                                 {
                                     row.status === 'Pending' && <td className="font-bold text-warning">{row.status}</td>

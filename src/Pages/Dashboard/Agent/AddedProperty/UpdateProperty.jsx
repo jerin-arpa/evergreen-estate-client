@@ -17,7 +17,8 @@ const UpdateProperty = () => {
         const form = event.target;
 
         const propertyTitle = form.propertyTitle.value;
-        const priceRange = form.priceRange.value;
+        const minPriceRange = form.minPriceRange.value;
+        const maxPriceRange = form.maxPriceRange.value;
         const location = form.location.value;
         const propertyImage = form.propertyImage.value;
         const description = form.description.value;
@@ -27,7 +28,7 @@ const UpdateProperty = () => {
         const agentImage = form.agentImage.value;
         const email = form.email.value;
 
-        const addPropertyInfo = { propertyTitle, priceRange, location, propertyImage, description, status, agentName, agentImage, email }
+        const addPropertyInfo = { propertyTitle, minPriceRange, maxPriceRange, location, propertyImage, description, status, agentName, agentImage, email }
 
         console.log(addPropertyInfo);
 
@@ -90,11 +91,19 @@ const UpdateProperty = () => {
                                 </div>
 
 
-                                <div className="form-control">
-                                    <label className="label">
-                                        <span className="label-text">Price Range</span>
-                                    </label>
-                                    <input type="text" name="priceRange" defaultValue={property.priceRange} className="input input-bordered" required />
+                                <div className="flex gap-5">
+                                    <div className="form-control">
+                                        <label className="label">
+                                            <span className="label-text">Min Price Range</span>
+                                        </label>
+                                        <input type="number" name="minPriceRange" defaultValue={property.minPriceRange} className="input input-bordered" required />
+                                    </div>
+                                    <div className="form-control">
+                                        <label className="label">
+                                            <span className="label-text">Max Price Range</span>
+                                        </label>
+                                        <input type="number" name="maxPriceRange" defaultValue={property.maxPriceRange} className="input input-bordered" required />
+                                    </div>
                                 </div>
 
 

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { BsFillEmojiSmileFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 
 const PropertyBought = () => {
@@ -66,9 +67,11 @@ const PropertyBought = () => {
                                             </p>
                                         </div>
 
-                                        <div className='my-5 flex gap-5 w-full'>
+                                        <div className='mt-10 flex gap-5 w-full'>
                                             {
-                                                card.status === 'Accepted' ? (<button className="btn w-full bg-[#03a9fc] border-[#03a9fc] hover:bg-white hover:text-[#03a9fc] text-white hover:border-[#03a9fc]">PAY</button>) : (<button disabled className="btn w-full bg-[#03a9fc] border-[#03a9fc] hover:bg-white hover:text-[#03a9fc] text-white hover:border-[#03a9fc]">PAY</button>)
+                                                card.status === 'Accepted' ? (<Link className="w-full" to='/dashboard/payment'>
+                                                    <button className="btn w-full bg-[#03a9fc] border-[#03a9fc] hover:bg-white hover:text-[#03a9fc] text-white hover:border-[#03a9fc]">PAY</button>
+                                                </Link>) : (<button disabled className="btn w-full bg-[#03a9fc] border-[#03a9fc] hover:bg-white hover:text-[#03a9fc] text-white hover:border-[#03a9fc]">PAY</button>)
                                             }
                                         </div>
                                     </div>

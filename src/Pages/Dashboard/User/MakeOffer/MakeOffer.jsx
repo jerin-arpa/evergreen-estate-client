@@ -36,6 +36,20 @@ const MakeOffer = () => {
         const email = form.email.value;
         const date = form.date.value;
 
+
+        if (offeredAmount < makeOffer.property.minPriceRange || offeredAmount > makeOffer.property.maxPriceRange) {
+            Swal.fire({
+                position: "center",
+                icon: "error",
+                title: "Oops...",
+                text: `Your offer should be in between $${makeOffer.property.minPriceRange}-$${makeOffer.property.maxPriceRange}`,
+                showConfirmButton: true,
+                timer: 1500
+            });
+            return;
+        }
+
+
         const addPropertyInfo = { propertyTitle, propertyImage, location, agentName, status, offeredAmount, buyerName, email, date }
 
         console.log(addPropertyInfo);
@@ -103,7 +117,7 @@ const MakeOffer = () => {
                                         <label className="label">
                                             <span className="label-text">Property Image</span>
                                         </label>
-                                        <input disabled type="text" name="propertyImage" placeholder={makeOffer.property.propertyImage} className="input input-bordered" required />
+                                        <input disabled type="text" name="propertyImage" defaultValue={makeOffer.property.propertyImage} className="input input-bordered" required />
                                     </div>
                                 </div>
 
@@ -135,7 +149,7 @@ const MakeOffer = () => {
 
                                 <div className="form-control">
                                     <label className="label">
-                                        <span className="label-text">Offered Amount <span className="text-[#03a9fc]">({makeOffer.property.priceRange})</span></span>
+                                        <span className="label-text">Offered Amount <span className="text-[#03a9fc]">({`$${makeOffer.property.minPriceRange}-$${makeOffer.property.maxPriceRange}`})</span></span>
                                     </label>
                                     <input type="text" name="offeredAmount" placeholder="Enter You offered Amount" className="input input-bordered" required />
                                 </div>

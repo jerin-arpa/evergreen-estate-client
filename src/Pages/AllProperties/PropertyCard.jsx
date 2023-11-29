@@ -14,7 +14,7 @@ const PropertyCard = ({ property }) => {
     }, []);
 
 
-    const { _id, propertyImage, propertyTitle, location, priceRange, status, agentImage, agentName } = property;
+    const { _id, propertyImage, propertyTitle, location, minPriceRange, maxPriceRange, status, agentImage, agentName } = property;
 
     return (
         <div className='rounded-xl shadow-xl'>
@@ -32,7 +32,7 @@ const PropertyCard = ({ property }) => {
                         <div className='flex items-center text-[#03a9fc]'>
                             <FaDollarSign></FaDollarSign>
                         </div>
-                        <p><span className='font-bold'>Price Range:</span> {priceRange}</p>
+                        <p><span className='font-bold'>Price Range:</span> {`$${minPriceRange}-$${maxPriceRange}`}</p>
                     </div>
                     <div className='flex gap-2 text-lg'>
                         <div className='flex items-center text-[#03a9fc]'>

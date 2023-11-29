@@ -32,7 +32,7 @@ const PropertyDetails = () => {
     const property = properties.find(property => property._id === id);
     console.log(property);
 
-    const { propertyImage, propertyTitle, location, priceRange, agentImage, agentName, email, description } = property;
+    const { propertyImage, propertyTitle, location, minPriceRange, maxPriceRange, agentImage, agentName, email, description } = property;
     const reviewTime = moment().format("YYYY-MM-D, h:mm a");
 
 
@@ -132,7 +132,7 @@ const PropertyDetails = () => {
                                         <div className='flex items-center text-[#03a9fc]'>
                                             <FaDollarSign></FaDollarSign>
                                         </div>
-                                        <p><span className='font-bold'>Price Range:</span> {priceRange}</p>
+                                        <p><span className='font-bold'>Price Range:</span> {`$${minPriceRange}-$${maxPriceRange}`}</p>
                                     </div>
 
                                     <div className='flex gap-2 text-lg'>

@@ -18,12 +18,13 @@ import ManageReview from "../Pages/Dashboard/Admin/ManageReview";
 import MyReview from "../Pages/Dashboard/User/MyReview/MyReview";
 import AdminRoute from "./AdminRoute";
 import MakeOffer from "../Pages/Dashboard/User/MakeOffer/MakeOffer";
-import PropertyBought from "../Pages/Dashboard/User/PropertyBought";
 import AddAProperty from "../Pages/Dashboard/Agent/AddAProperty";
 import AddedProperties from "../Pages/Dashboard/Agent/AddedProperty/AddedProperties";
 import SoldProperties from "../Pages/Dashboard/Agent/SoldProperties";
 import UpdateProperty from "../Pages/Dashboard/Agent/AddedProperty/UpdateProperty";
 import RequestedProperties from "../Pages/Dashboard/Agent/RequestProperty/RequestedProperties";
+import PropertyBought from "../Pages/Dashboard/User/PropertyBought/PropertyBought";
+// import Payment from "../Pages/Dashboard/User/PropertyBought/Payment";
 
 
 
@@ -129,6 +130,10 @@ const router = createBrowserRouter([
                 path: 'propertyBought',
                 element: <PropertyBought></PropertyBought>,
             },
+            // {
+            //     path: 'payment',
+            //     element: <Payment></Payment>
+            // }
         ]
     }
 ]);

@@ -92,7 +92,7 @@ const AddedProperties = () => {
                                         <div className='flex items-center text-[#03a9fc]'>
                                             <FaDollarSign></FaDollarSign>
                                         </div>
-                                        <p><span className='font-bold'>Price Range:</span> {property.priceRange}</p>
+                                        <p><span className='font-bold'>Price Range:</span> {`$${property.minPriceRange}-$${property.maxPriceRange}`}</p>
                                     </div>
                                     <div className='flex gap-2 text-lg'>
                                         <div className='flex items-center text-[#03a9fc]'>
