@@ -1,19 +1,20 @@
 import { Helmet } from "react-helmet";
 
 
-const RequestedProperties = () => {
+const SoldProperties = () => {
     return (
         <div>
             <Helmet>
                 <meta charSet="utf-8" />
-                <title>Evergreen Estate | Requested Property</title>
+                <title>Evergreen Estate | Sold Property</title>
             </Helmet>
 
             <div className="flex items-center justify-center my-10">
-                <h2 className="text-5xl font-bold text-center uppercase">Requested PROPERTY</h2>
+                <h2 className="text-5xl font-bold text-center uppercase">MY SOLD PROPERTY</h2>
             </div>
 
             <div className="divider mb-10"></div>
+
 
             <div>
 
@@ -22,4 +23,4 @@ const RequestedProperties = () => {
     );
 };
 
-export default RequestedProperties;
+export default SoldProperties;

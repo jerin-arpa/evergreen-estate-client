@@ -1,5 +1,9 @@
-import { FaHome, FaUser, FaUsers } from "react-icons/fa";
-import { MdOutlineMenu, MdRealEstateAgent, MdReviews } from "react-icons/md";
+import { FaCartPlus, FaHome, FaUser, FaUsers } from "react-icons/fa";
+import { MdBookmarkAdded, MdOutlineMenu, MdRealEstateAgent, MdReviews } from "react-icons/md";
+import { IoIosAddCircle } from "react-icons/io";
+import { BiSolidAnalyse } from "react-icons/bi";
+import { RiMenuSearchFill } from "react-icons/ri";
+import { VscRequestChanges } from "react-icons/vsc";
 import { NavLink, Outlet } from "react-router-dom";
 import UseAdmin from "../../hooks/useAdmin";
 import UseAgent from "../../hooks/useAgent";
@@ -41,16 +45,20 @@ const DashboardRoute = () => {
             isAgent && <>
                 {/* Agent Dashboard */}
                 <li className="text-xl">
+                    <NavLink to="/dashboard/addProperties">
+                        <IoIosAddCircle></IoIosAddCircle>Add Properties</NavLink>
+                </li>
+                <li className="text-xl">
                     <NavLink to="/dashboard/addedProperties">
-                        <MdRealEstateAgent></MdRealEstateAgent>My Added Properties</NavLink>
+                        <MdBookmarkAdded></MdBookmarkAdded>Added Properties</NavLink>
                 </li>
                 <li className="text-xl">
                     <NavLink to="/dashboard/soldProperties">
-                        <FaUsers></FaUsers> My Sold Properties</NavLink>
+                        <BiSolidAnalyse></BiSolidAnalyse>Sold Properties</NavLink>
                 </li>
                 <li className="text-xl">
                     <NavLink to="/dashboard/requestProperties">
-                        <MdReviews></MdReviews>
+                        <VscRequestChanges></VscRequestChanges>
                         Requested Properties</NavLink>
                 </li>
             </>
@@ -61,11 +69,11 @@ const DashboardRoute = () => {
                 {/* User Dashboard */}
                 <li className="text-xl">
                     <NavLink to="/dashboard/wishlist">
-                        <MdRealEstateAgent></MdRealEstateAgent> Wishlist</NavLink>
+                        <FaCartPlus></FaCartPlus> Wishlist</NavLink>
                 </li>
                 <li className="text-xl">
                     <NavLink to="/dashboard/propertyBought">
-                        <FaUsers></FaUsers> Property Bought</NavLink>
+                        <RiMenuSearchFill></RiMenuSearchFill> Property Bought</NavLink>
                 </li>
                 <li className="text-xl">
                     <NavLink to="/dashboard/myReviews">

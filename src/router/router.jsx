@@ -10,8 +10,7 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import DashboardRoute from "../Layout/DashboardRoute/DashboardRoute";
 import ManageProperties from "../Pages/Dashboard/Admin/ManageProperties";
 import ManageUser from "../Pages/Dashboard/Admin/ManageUser";
-import AddAProperty from "../Pages/Dashboard/Agent/AddAProperty";
-import AllProperties from "../Pages/HomePage/AllProperties/AllProperties";
+import AllProperties from "../Pages/AllProperties/AllProperties";
 import PropertyDetails from "../Pages/PropertyDetails/PropertyDetails";
 import Wishlist from "../Pages/Dashboard/User/Wishlist/Wishlist";
 import Profile from "../Components/Profile/Profile";
@@ -20,6 +19,11 @@ import MyReview from "../Pages/Dashboard/User/MyReview/MyReview";
 import AdminRoute from "./AdminRoute";
 import MakeOffer from "../Pages/Dashboard/User/MakeOffer/MakeOffer";
 import PropertyBought from "../Pages/Dashboard/User/PropertyBought";
+import AddAProperty from "../Pages/Dashboard/Agent/AddAProperty";
+import AddedProperties from "../Pages/Dashboard/Agent/AddedProperty/AddedProperties";
+import SoldProperties from "../Pages/Dashboard/Agent/SoldProperties";
+import RequestedProperties from "../Pages/Dashboard/Agent/RequestedProperties";
+import UpdateProperty from "../Pages/Dashboard/Agent/AddedProperty/UpdateProperty";
 
 
 
@@ -58,10 +62,6 @@ const router = createBrowserRouter([
                 path: "/signup",
                 element: <SignUp></SignUp>,
             },
-            {
-                path: "/addProperty",
-                element: <AddAProperty></AddAProperty>,
-            },
         ]
     },
     {
@@ -85,6 +85,30 @@ const router = createBrowserRouter([
                 path: 'manageReviews',
                 element: <AdminRoute><ManageReview></ManageReview></AdminRoute>,
             },
+
+            // Agent Route
+            {
+                path: "addProperties",
+                element: <AddAProperty></AddAProperty>,
+            },
+            {
+                path: "addedProperties",
+                element: <AddedProperties></AddedProperties>,
+            },
+            {
+                path: "updateProperty/:id",
+                element: <UpdateProperty></UpdateProperty>,
+                loader: ({ params }) => fetch(`http://localhost:5000/properties/${params.id}`),
+            },
+            {
+                path: "soldProperties",
+                element: <SoldProperties></SoldProperties>,
+            },
+            {
+                path: "requestProperties",
+                element: <RequestedProperties></RequestedProperties>,
+            },
+
 
             // user Route
             {

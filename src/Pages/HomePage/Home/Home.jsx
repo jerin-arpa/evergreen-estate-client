@@ -1,10 +1,11 @@
 import { Helmet } from "react-helmet";
 import SwiperSliders from "../SwiperSliders/SwiperSliders";
-import AllProperties from "../AllProperties/AllProperties";
 import RecentNews from "../RecentNews/RecentNews";
 import Subscribe from "../Subscribe/Subscribe";
 import OurAgents from "../OurAgents/OurAgents";
 import PropertyTypes from "../PropertyTypes/PropertyTypes";
+import AdvertiseProperty from "../AdvertiseProperty/AdvertiseProperty";
+import LatestReview from "../LatestReview/LatestReview";
 
 
 const Home = () => {
@@ -19,9 +20,10 @@ const Home = () => {
 
             <div>
                 <SwiperSliders></SwiperSliders>
-                <AllProperties></AllProperties>
+                <AdvertiseProperty></AdvertiseProperty>
                 <OurAgents></OurAgents>
                 <PropertyTypes></PropertyTypes>
+                <LatestReview></LatestReview>
                 <RecentNews></RecentNews>
                 <Subscribe></Subscribe>
             </div>

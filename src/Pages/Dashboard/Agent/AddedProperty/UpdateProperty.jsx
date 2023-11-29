@@ -1,12 +1,15 @@
-import { useContext } from "react";
-import { AuthContext } from "../../../provider/AuthProvider";
 import { Helmet } from "react-helmet";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
 
 
-const AddAProperty = () => {
-    const { user } = useContext(AuthContext);
+const UpdateProperty = () => {
+    const property = useLoaderData();
+    console.log(property);
+
+    console.log('Property ID:', property._id);
+
+
     const navigate = useNavigate();
 
     const handleAddProperty = event => {
@@ -29,8 +32,8 @@ const AddAProperty = () => {
         console.log(addPropertyInfo);
 
 
-        fetch('http://localhost:5000/properties', {
-            method: 'POST',
+        fetch(`http://localhost:5000/properties/${property._id}`, {
+            method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
             },
@@ -39,38 +42,38 @@ const AddAProperty = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                if (data.insertedId) {
+                if (data.modifiedCount > 0) {
                     Swal.fire({
-                        position: "center",
-                        icon: "success",
-                        title: "Food Added Successfully",
-                        showConfirmButton: true,
-                        timer: 1500
-                    });
-                    form.reset();
-                    navigate('/allProperties')
+                        title: 'Success!',
+                        text: 'Property Updated successfully',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            navigate('/addedProperty');
+                        }
+                    })
+
                 }
             })
     }
 
-
-
     return (
-        <div>
+        <div className="mb-20">
             <Helmet>
                 <meta charSet="utf-8" />
-                <title>Evergreen Estate | Add Property</title>
+                <title>Evergreen Estate | Update Property</title>
             </Helmet>
 
             <div className="flex items-center justify-center my-10">
-                <h2 className="text-5xl font-bold text-center uppercase">ADD A PROPERTY</h2>
+                <h2 className="text-5xl font-bold text-center uppercase">UPDATE PROPERTY</h2>
             </div>
 
-            <div className="divider"></div>
+            <div className="divider mb-10"></div>
 
             <div className="container mx-auto px-5 mb-20">
                 <div className="flex justify-center">
-                    <form onSubmit={handleAddProperty} className="w-full lg:w-2/3 mt-16 border p-10 pb-14 rounded-xl">
+                    <form onSubmit={handleAddProperty} className="w-full lg:w-2/3 border p-10 pb-14 rounded-xl">
 
                         {/* Property Information */}
                         <h2 className="text-xl font-bold pb-1">Property INFORMATION</h2>
@@ -83,7 +86,7 @@ const AddAProperty = () => {
                                     <label className="label">
                                         <span className="label-text">Property Title</span>
                                     </label>
-                                    <input type="text" name="propertyTitle" placeholder="Enter Property Title" className="input input-bordered" required />
+                                    <input type="text" name="propertyTitle" defaultValue={property.propertyTitle} className="input input-bordered" required />
                                 </div>
 
 
@@ -91,7 +94,7 @@ const AddAProperty = () => {
                                     <label className="label">
                                         <span className="label-text">Price Range</span>
                                     </label>
-                                    <input type="text" name="priceRange" placeholder="Enter Price Range" className="input input-bordered" required />
+                                    <input type="text" name="priceRange" defaultValue={property.priceRange} className="input input-bordered" required />
                                 </div>
 
 
@@ -99,7 +102,7 @@ const AddAProperty = () => {
                                     <label className="label">
                                         <span className="label-text">Property Location</span>
                                     </label>
-                                    <input type="text" name="location" placeholder="Enter Property Location" className="input input-bordered" required />
+                                    <input type="text" name="location" defaultValue={property.location} className="input input-bordered" required />
                                 </div>
                             </div>
 
@@ -109,7 +112,7 @@ const AddAProperty = () => {
                                         <label className="label">
                                             <span className="label-text">Property Image</span>
                                         </label>
-                                        <input type="text" name="propertyImage" placeholder="Enter property image" className="input input-bordered" required />
+                                        <input type="text" name="propertyImage" defaultValue={property.propertyImage} className="input input-bordered" required />
                                     </div>
                                 </div>
 
@@ -118,7 +121,7 @@ const AddAProperty = () => {
                                     <label className="label">
                                         <span className="label-text">Description</span>
                                     </label>
-                                    <input type="text" name="description" placeholder="Write Property Description" className="input input-bordered" required />
+                                    <input type="text" name="description" defaultValue={property.description} className="input input-bordered" required />
                                 </div>
 
 
@@ -126,7 +129,7 @@ const AddAProperty = () => {
                                     <label className="label">
                                         <span className="label-text">Verification Status</span>
                                     </label>
-                                    <input type="text" name="status" disabled defaultValue={'Pending'} className="input input-bordered" required />
+                                    <input type="text" name="status" disabled defaultValue={property.status} className="input input-bordered" required />
                                 </div>
                             </div>
                         </div>
@@ -144,7 +147,7 @@ const AddAProperty = () => {
                                     <span className="label-text">Agent Image</span>
                                 </label>
                                 <input type="text" name="agentImage"
-                                    defaultValue={user?.photoURL} className="input input-bordered" />
+                                    defaultValue={property.agentImage} className="input input-bordered" />
                             </div>
                         </div>
 
@@ -154,20 +157,20 @@ const AddAProperty = () => {
                                 <label className="label">
                                     <span className="label-text">Agent Name</span>
                                 </label>
-                                <input type="text" name="agentName" defaultValue={user?.displayName} className="input input-bordered" required />
+                                <input disabled type="text" name="agentName" defaultValue={property.agentName} className="input input-bordered" required />
                             </div>
 
                             <div className="form-control w-full">
                                 <label className="label">
                                     <span className="label-text">Agent Email</span>
                                 </label>
-                                <input type="email" name="email" defaultValue={user?.email} className="input input-bordered" required />
+                                <input disabled type="email" name="email" defaultValue={property.email} className="input input-bordered" required />
                             </div>
                         </div>
 
 
                         <div>
-                            <button className="btn bg-[#03a9fc] border-[#03a9fc] hover:bg-white hover:text-[#03a9fc] text-white font-bold w-full mt-8">Add Property</button>
+                            <button className="btn bg-[#03a9fc] border-[#03a9fc] hover:bg-white hover:text-[#03a9fc] text-white font-bold w-full mt-8">Update Property</button>
                         </div>
                     </form>
                 </div>
@@ -176,4 +179,4 @@ const AddAProperty = () => {
     );
 };
 
-export default AddAProperty;
+export default UpdateProperty;
