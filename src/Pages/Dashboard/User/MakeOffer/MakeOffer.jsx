@@ -37,7 +37,7 @@ const MakeOffer = () => {
         const date = form.date.value;
 
 
-        if (offeredAmount < makeOffer.property.minPriceRange || offeredAmount > makeOffer.property.maxPriceRange) {
+        if (parseFloat(offeredAmount) < parseFloat(makeOffer.property.minPriceRange) || parseFloat(offeredAmount) > parseFloat(makeOffer.property.maxPriceRange)) {
             Swal.fire({
                 position: "center",
                 icon: "error",

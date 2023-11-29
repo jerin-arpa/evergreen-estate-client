@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { AuthContext } from '../../provider/AuthProvider';
 import UseAxiosPublic from '../../hooks/UseAxiosPublic';
 import SocialLogin from '../../Components/SocialLogin/SocialLogin';
+import { Helmet } from 'react-helmet';
 
 
 const SignUp = () => {
@@ -96,6 +97,10 @@ const SignUp = () => {
 
     return (
         <div>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Evergreen Estate | SignUp</title>
+            </Helmet>
             <div className="flex justify-center my-12 container mx-auto px-5 py-10">
                 <div className="border rounded-xl w-full md:w-3/4 lg:w-2/4 py-8">
                     <h2 className="text-3xl font-bold text-center pt-10 pb-5"><span className='text-[#03a9fc]'>SignUp</span> <span className=''>your account</span></h2>

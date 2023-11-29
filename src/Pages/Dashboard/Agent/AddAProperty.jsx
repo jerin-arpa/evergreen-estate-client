@@ -30,7 +30,7 @@ const AddAProperty = () => {
 
         console.log(addPropertyInfo);
 
-        if (minPriceRange > maxPriceRange) {
+        if (parseFloat(minPriceRange) > parseFloat(maxPriceRange)) {
             Swal.fire({
                 position: "center",
                 icon: "error",
@@ -72,7 +72,7 @@ const AddAProperty = () => {
         <div>
             <Helmet>
                 <meta charSet="utf-8" />
-                <title>Evergreen Estate | Add Property</title>
+                <title>Evergreen Estate | Add A Property</title>
             </Helmet>
 
             <div className="flex items-center justify-center my-10">

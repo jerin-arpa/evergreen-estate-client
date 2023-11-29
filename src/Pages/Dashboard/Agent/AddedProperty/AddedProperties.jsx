@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { FaDollarSign, FaUserCircle } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
@@ -8,6 +8,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import UseAxiosSecure from "../../../../hooks/UseAxiosSecure";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../../provider/AuthProvider";
 
 
 const AddedProperties = () => {
@@ -15,6 +16,7 @@ const AddedProperties = () => {
         AOS.init();
     }, []);
 
+    const { user } = useContext(AuthContext);
     const axiosSecure = UseAxiosSecure();
     const [properties, setProperties] = useState([]);
     const navigate = useNavigate();
@@ -28,8 +30,8 @@ const AddedProperties = () => {
             })
     }, [])
 
-    // const addedProperty = properties.filter(item => item.userEmail?.toLowerCase() === user?.email.toLowerCase());
-    // console.log(addedProperty)
+    const addedProperty = properties.filter(item => item.email?.toLowerCase() === user?.email.toLowerCase());
+    console.log(addedProperty)
 
     const handleDeleteProperty = (id) => {
         console.log(id);
@@ -76,9 +78,9 @@ const AddedProperties = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 {
-                    properties.map(property => <div key={property._id}>
+                    addedProperty.map(property => <div key={property._id}>
                         <div className='rounded-xl shadow-xl'>
-                            <img data-aos="fade-down" data-aos-duration="3000" className='w-full h-64 rounded-t-xl' src={property.propertyImage} alt="" />
+                            <img data-aos="fade-down" data-aos-duration="3000" className='w-full h-72 rounded-t-xl' src={property.propertyImage} alt="" />
                             <div data-aos="fade-up" data-aos-duration="3000" className='p-5 pb-8'>
                                 <div className='md:h-[150px]'>
                                     <h2 className='text-2xl font-bold mb-2'>{property.propertyTitle}</h2>

@@ -5,6 +5,7 @@ import { FaUsers } from "react-icons/fa";
 import { SiRobotframework } from "react-icons/si";
 import Swal from "sweetalert2";
 import { useLoaderData } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 
 
@@ -151,6 +152,11 @@ const ManageUser = () => {
 
     return (
         <div>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Evergreen Estate | Manage Users</title>
+            </Helmet>
+
             <div className="mb-10 container mx-auto px-5">
                 <div className="flex items-center justify-center">
                     <h2 className="text-5xl font-bold text-center mt-10 mb-5">TOTAL USERS: {users.length}</h2>

@@ -3,6 +3,7 @@ import { AuthContext } from "../../../../provider/AuthProvider";
 import { BsFillEmojiSmileFill } from "react-icons/bs";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 
 const MyReview = () => {
@@ -58,6 +59,11 @@ const MyReview = () => {
 
     return (
         <div>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Evergreen Estate | My Reviews</title>
+            </Helmet>
+
             <div className="flex items-center justify-center my-10">
                 <h2 className="text-5xl font-bold text-center uppercase">My Review</h2>
             </div>
@@ -84,7 +90,7 @@ const MyReview = () => {
                                 </div>
                                 <div className="flex items-center col-span-3 p-5 ">
                                     <div>
-                                        <div className='md:h-52'>
+                                        <div className=''>
                                             <p className='text-2xl text-[#03a9fc] font-bold '>{card.property.propertyTitle}</p>
 
                                             <p className='text-lg mt-2'><span className='font-bold'>Agent Name:</span> {card.property.agentName}</p>

@@ -1,6 +1,7 @@
 import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
 import UseAxiosSecure from "../../../../hooks/UseAxiosSecure";
+import { Helmet } from "react-helmet";
 
 
 
@@ -56,6 +57,11 @@ const RequestedProperties = () => {
 
     return (
         <div>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Evergreen Estate | Requested Property</title>
+            </Helmet>
+
             <div className="flex items-center justify-center">
                 <h2 className="text-5xl font-bold text-center mt-10 mb-5">REQUESTED PROPERTY</h2>
             </div>

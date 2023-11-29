@@ -4,6 +4,7 @@ import { IoTime } from "react-icons/io5";
 import { MdOutlineReviews, MdOutlineSupportAgent } from "react-icons/md";
 import UseAxiosSecure from "../../../hooks/UseAxiosSecure";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 
 
@@ -51,6 +52,11 @@ const ManageReview = () => {
 
     return (
         <div>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Evergreen Estate | Manage Review</title>
+            </Helmet>
+
             <div className="flex items-center justify-center">
                 <h2 className="text-5xl font-bold text-center mt-10 mb-5">MANAGE REVIEW</h2>
             </div>

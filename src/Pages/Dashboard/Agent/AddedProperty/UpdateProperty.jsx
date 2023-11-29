@@ -34,7 +34,7 @@ const UpdateProperty = () => {
         console.log(addPropertyInfo);
 
 
-        if (minPriceRange > maxPriceRange) {
+        if (parseFloat(minPriceRange) > parseFloat(maxPriceRange)) {
             Swal.fire({
                 position: "center",
                 icon: "error",

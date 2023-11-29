@@ -1,0 +1,122 @@
+[
+    {
+        "id": 1,
+        "propertyTitle": "Luxury Beachfront Villa",
+        "propertyImage": "https://i.ibb.co/P4cs7KM/p-1.png",
+        "minPriceRange": "$500,000",
+        "maxPriceRange": "$750,000",
+        "description": "Exquisite beachfront villa with breathtaking ocean views and premium amenities. Experience luxury living by the sea.",
+        "location": "Coastal Paradise",
+        "status": "For Sale"
+    },
+    {
+        "id": 2,
+        "propertyTitle": "Modern Downtown Condo",
+        "propertyImage": "https://i.ibb.co/ZNkbb7r/p-2.png",
+        "minPriceRange": "$300,000",
+        "maxPriceRange": "$450,000",
+        "description": "Sleek and modern condo located in the heart of the downtown area. Enjoy urban living with convenience and style.",
+        "location": "City Center",
+        "status": "For Sale"
+    },
+    {
+        "id": 3,
+        "propertyTitle": "Scenic Mountain Retreat",
+        "propertyImage": "https://i.ibb.co/thQwRtR/p-3.png",
+        "minPriceRange": "$800,000",
+        "maxPriceRange": "$1,200,000",
+        "description": "Escape to a peaceful mountain retreat surrounded by nature. This property offers tranquility and stunning mountain views.",
+        "location": "Mountain Valley",
+        "status": "For Sale"
+    },
+    {
+        "id": 4,
+        "propertyTitle": "Elegant Suburban Mansion",
+        "propertyImage": "https://i.ibb.co/bXGRgXg/p-4.png",
+        "minPriceRange": "$1,500,000",
+        "maxPriceRange": "$2,000,000",
+        "description": "Indulge in luxury with this elegant mansion in an exclusive suburban neighborhood. Spacious interiors and premium finishes await.",
+        "location": "Exclusive Estates",
+        "status": "For Sale"
+    },
+    {
+        "id": 5,
+        "propertyTitle": "Rustic Countryside Estate",
+        "propertyImage": "https://i.ibb.co/PC3qbnP/p-5.png",
+        "minPriceRange": "$1,200,000",
+        "maxPriceRange": "$1,800,000",
+        "description": "Experience the charm of rural living in this rustic countryside estate. Surrounded by picturesque landscapes.",
+        "location": "Rural Retreat",
+        "status": "For Sale"
+    },
+    {
+        "id": 6,
+        "propertyTitle": "Urban Penthouse with Skyline Views",
+        "propertyImage": "https://i.ibb.co/T2P23c7/p-6.png",
+        "minPriceRange": "$2,000,000",
+        "maxPriceRange": "$2,500,000",
+        "description": "Live in the lap of luxury with this stunning urban penthouse offering panoramic skyline views. Modern design meets sophistication.",
+        "location": "Metropolitan Heights",
+        "status": "For Sale"
+    },
+    {
+        "id": 7,
+        "propertyTitle": "Historic City Mansion",
+        "propertyImage": "https://i.ibb.co/1GMGfrF/p-7.png",
+        "minPriceRange": "$3,000,000",
+        "maxPriceRange": "$4,000,000",
+        "description": "Own a piece of history with this meticulously restored historic mansion in the heart of the city. Classic elegance meets modern comfort.",
+        "location": "Historic District",
+        "status": "For Sale"
+    },
+    {
+        "id": 8,
+        "propertyTitle": "Serenity Lakeside Cottage",
+        "propertyImage": "https://i.ibb.co/mGW5Z0F/p-8.png",
+        "minPriceRange": "$700,000",
+        "maxPriceRange": "$900,000",
+        "description": "Escape to a lakeside cottage offering peace and tranquility. Enjoy stunning views and serene surroundings by the water.",
+        "location": "Tranquil Waters",
+        "status": "For Sale"
+    },
+    {
+        "id": 9,
+        "propertyTitle": "Contemporary City Loft",
+        "propertyImage": "https://i.ibb.co/b2Qv2pb/p-9.png",
+        "minPriceRange": "$600,000",
+        "maxPriceRange": "$800,000",
+        "description": "Live in style with this contemporary city loft, boasting sleek design and urban sophistication. Ideal for who crave modern city living.",
+        "location": "Downtown Hub",
+        "status": "For Sale"
+    },
+    {
+        "id": 10,
+        "propertyTitle": "Majestic Riverside Estate",
+        "propertyImage": "https://i.ibb.co/86jdyNN/p-10.png",
+        "minPriceRange": "$4,000,000",
+        "maxPriceRange": "$5,000,000",
+        "description": "Experience grandeur with this majestic estate along the river. Impeccable architecture, lush grounds, and a luxurious lifestyle await.",
+        "location": "Riverside Haven",
+        "status": "For Sale"
+    },
+    {
+        "id": 11,
+        "propertyTitle": "Chic Urban Townhouse",
+        "propertyImage": "https://i.ibb.co/vjpvmv7/p-11.png",
+        "minPriceRange": "$900,000",
+        "maxPriceRange": "$1,100,000",
+        "description": "Discover chic urban living in stylish townhouse. Modern amenities, a prime location make it an ideal choice for urban enthusiasts.",
+        "location": "Cityscape Terrace",
+        "status": "For Sale"
+    },
+    {
+        "id": 12,
+        "propertyTitle": "Tranquil Forest Cabin",
+        "propertyImage": "https://i.ibb.co/nBMKcZb/p-12.png",
+        "minPriceRange": "$500,000",
+        "maxPriceRange": "$700,000",
+        "description": "Escape to nature with this tranquil forest cabin. Surrounded by lush woods, it provides the perfect retreat bustle of city life.",
+        "location": "Enchanted Forests",
+        "status": "For Sale"
+    }
+]

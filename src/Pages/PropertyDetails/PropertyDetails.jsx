@@ -103,7 +103,7 @@ const PropertyDetails = () => {
                         icon: 'success',
                         confirmButtonText: 'OK'
                     });
-                    navigate('/');
+                    navigate('/allProperties');
                 }
             })
     }

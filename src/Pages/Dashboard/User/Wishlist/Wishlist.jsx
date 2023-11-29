@@ -4,6 +4,7 @@ import WishlistCard from "./WishlistCard";
 import { useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../../../provider/AuthProvider";
+import { Helmet } from "react-helmet";
 
 
 const Wishlist = () => {
@@ -18,6 +19,10 @@ const Wishlist = () => {
 
     return (
         <div>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Evergreen Estate | My Wishlist</title>
+            </Helmet>
             <div className="flex items-center justify-center my-10">
                 <h2 className="text-5xl font-bold text-center uppercase">My Wishlist</h2>
             </div>

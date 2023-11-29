@@ -1,6 +1,7 @@
 import UseAxiosSecure from "../../../hooks/UseAxiosSecure";
 import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
+import { Helmet } from "react-helmet";
 
 
 
@@ -55,6 +56,11 @@ const ManageProperties = () => {
 
     return (
         <div className="max-w-full">
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Evergreen Estate | Manage Properties</title>
+            </Helmet>
+
             <div className="flex items-center justify-center max-w-full">
                 <h2 className="text-5xl font-bold text-center mt-10 mb-5">MANAGE PROPERTY</h2>
             </div>

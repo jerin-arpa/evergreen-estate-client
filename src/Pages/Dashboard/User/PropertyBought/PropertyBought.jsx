@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { BsFillEmojiSmileFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../../provider/AuthProvider";
 
 
 const PropertyBought = () => {
+    const { user } = useContext(AuthContext);
 
     const [property, setProperty] = useState([]);
     useEffect(() => {
@@ -15,6 +17,9 @@ const PropertyBought = () => {
                 setProperty(data);
             });
     }, []);
+
+    const boughtProperty = property.filter(item => item.email?.toLowerCase() === user?.email.toLowerCase());
+    console.log(boughtProperty)
 
     return (
         <div>
@@ -32,7 +37,7 @@ const PropertyBought = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 {
-                    property.length === 0 ? <div className="col-span-3 flex justify-center">
+                    boughtProperty.length === 0 ? <div className="col-span-3 flex justify-center">
                         <div>
                             <div className="flex justify-center">
                                 <BsFillEmojiSmileFill className="text-9xl text-[#ffcc33] mb-5"></BsFillEmojiSmileFill>
@@ -42,38 +47,36 @@ const PropertyBought = () => {
                         </div>
                     </div>
                         :
-                        property.map(card => <div key={card._id} className="mb-5 rounded-xl shadow-xl">
+                        boughtProperty.map(card => <div key={card._id} className="mb-5 rounded-xl shadow-xl">
                             <div>
-                                <div className="col-span-1">
-                                    <img className="w-full h-full" src={card.propertyImage} alt="" />
+                                <div>
+                                    <img className="w-full h-72" src={card.propertyImage} alt="" />
                                 </div>
-                                <div className="flex items-center col-span-3 p-5 ">
+                                <div className="p-5">
                                     <div>
-                                        <div className='md:h-48'>
-                                            <p className='text-2xl text-[#03a9fc] font-bold '>{card.propertyTitle}</p>
+                                        <p className='text-2xl text-[#03a9fc] font-bold '>{card.propertyTitle}</p>
 
-                                            <p className='text-xl mt-2 mb-2'><span className='font-bold'>Agent Name:</span> {card.agentName}</p>
+                                        <p className='text-xl mt-2 mb-2'><span className='font-bold'>Agent Name:</span> {card.agentName}</p>
 
-                                            <p className='text-lg'><span className='font-bold'>Offered Amount:</span> ${card.offeredAmount}</p>
+                                        <p className='text-lg'><span className='font-bold'>Offered Amount:</span> ${card.offeredAmount}</p>
 
-                                            <p className='text-lg'><span className='font-bold'>Location:</span> {card.location}</p>
+                                        <p className='text-lg'><span className='font-bold'>Location:</span> {card.location}</p>
 
-                                            <p className='text-lg'><span className='font-bold'>Verification Status:</span>
-                                                {card.status === 'Pending' && <span className="text-warning"> {card.status}</span>}
+                                        <p className='text-lg'><span className='font-bold'>Verification Status:</span>
+                                            {card.status === 'Pending' && <span className="text-warning"> {card.status}</span>}
 
-                                                {card.status === 'Accepted' && <span className="text-green-500"> {card.status}</span>}
+                                            {card.status === 'Accepted' && <span className="text-green-500"> {card.status}</span>}
 
-                                                {card.status === 'Rejected' && <span className="text-red-600"> {card.status}</span>}
-                                            </p>
-                                        </div>
+                                            {card.status === 'Rejected' && <span className="text-red-600"> {card.status}</span>}
+                                        </p>
+                                    </div>
 
-                                        <div className='mt-10 flex gap-5 w-full'>
-                                            {
-                                                card.status === 'Accepted' ? (<Link className="w-full" to='/dashboard/payment'>
-                                                    <button className="btn w-full bg-[#03a9fc] border-[#03a9fc] hover:bg-white hover:text-[#03a9fc] text-white hover:border-[#03a9fc]">PAY</button>
-                                                </Link>) : (<button disabled className="btn w-full bg-[#03a9fc] border-[#03a9fc] hover:bg-white hover:text-[#03a9fc] text-white hover:border-[#03a9fc]">PAY</button>)
-                                            }
-                                        </div>
+                                    <div className='mt-10 flex gap-5 w-full'>
+                                        {
+                                            card.status === 'Accepted' ? (<Link className="w-full" to='/dashboard/payment'>
+                                                <button className="btn w-full bg-[#03a9fc] border-[#03a9fc] hover:bg-white hover:text-[#03a9fc] text-white hover:border-[#03a9fc]">PAY</button>
+                                            </Link>) : (<button disabled className="btn w-full bg-[#03a9fc] border-[#03a9fc] hover:bg-white hover:text-[#03a9fc] text-white hover:border-[#03a9fc]">PAY</button>)
+                                        }
                                     </div>
                                 </div>
                             </div>

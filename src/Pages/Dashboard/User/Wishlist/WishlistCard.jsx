@@ -48,11 +48,11 @@ const WishlistCard = ({ card, myWishlist, setMyWishlist }) => {
             <div className="mb-5 rounded-xl shadow-xl">
                 <div>
                     <div className="col-span-1">
-                        <img className="w-full h-full" src={propertyImage} alt="" />
+                        <img className="w-full h-72" src={propertyImage} alt="" />
                     </div>
-                    <div className="flex items-center col-span-3 p-5 ">
+                    <div className="flex items-center col-span-3 px-5 pt-5">
                         <div>
-                            <div className='md:h-44'>
+                            <div>
                                 <p className='text-2xl text-[#03a9fc] font-bold '>{propertyTitle}</p>
 
                                 <p className='text-lg mt-2'><span className='font-bold'>Price:</span>{`$${minPriceRange}-$${maxPriceRange}`}</p>
@@ -79,15 +79,15 @@ const WishlistCard = ({ card, myWishlist, setMyWishlist }) => {
                                     </div>
                                 </div>
                             </div>
-
-                            <div className='my-5 flex gap-5 w-full'>
-                                <Link to={`/dashboard/makeOffer/${_id}`}>
-                                    <button className="btn bg-[#03a9fc] border-[#03a9fc] hover:bg-white hover:text-[#03a9fc] text-white hover:border-[#03a9fc]">Make An Offer</button>
-                                </Link>
-
-                                <button onClick={() => handleDelete(_id)} className="btn bg-red-500 border-red-500 hover:bg-white hover:text-red-500 text-white hover:border-red-500">Remove</button>
-                            </div>
                         </div>
+                    </div>
+
+                    <div className='my-5 flex gap-5 w-full px-5 pb-5'>
+                        <Link to={`/dashboard/makeOffer/${_id}`}>
+                            <button className="btn px-7 bg-[#03a9fc] border-[#03a9fc] hover:bg-white hover:text-[#03a9fc] text-white hover:border-[#03a9fc]">Make An Offer</button>
+                        </Link>
+
+                        <button onClick={() => handleDelete(_id)} className="btn flex-1 bg-red-500 border-red-500 hover:bg-white hover:text-red-500 text-white hover:border-red-500">Remove</button>
                     </div>
                 </div>
             </div>

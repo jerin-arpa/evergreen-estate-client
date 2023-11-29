@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { AuthContext } from "../../provider/AuthProvider";
 import SocialLogin from "../../Components/SocialLogin/SocialLogin";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
     const { signIn } = useContext(AuthContext);
@@ -34,6 +35,10 @@ const Login = () => {
 
     return (
         <div>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Evergreen Estate | Login</title>
+            </Helmet>
             <div className="flex justify-center my-12 container mx-auto px-5 py-10">
                 <div className="border rounded-xl w-full md:w-3/4 lg:w-2/4 py-8">
                     <h2 className="text-3xl font-bold text-center pt-10 pb-5"><span className="text-[#03a9fc]">Login</span> <span className="">your account</span></h2>
