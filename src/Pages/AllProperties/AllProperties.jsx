@@ -5,7 +5,7 @@ import useProperty from "../../hooks/useProperty";
 const AllProperties = () => {
     const [properties] = useProperty();
 
-    const verifiedProperties = properties.filter(property => property.status && property.status.toLowerCase() === 'verified');
+    const verifiedProperties = properties.filter(property => property.status && property.status.toLowerCase() === 'verified' && property.role !== 'fraud');
 
     return (
         <div className="container mx-auto px-5 mb-20 mt-20">

@@ -24,11 +24,23 @@ const AddAProperty = () => {
         const agentName = form.agentName.value;
         const agentImage = form.agentImage.value;
         const email = form.email.value;
+        const role = 'agent';
 
-        const addPropertyInfo = { propertyTitle, minPriceRange, maxPriceRange, location, propertyImage, description, status, agentName, agentImage, email }
+        const addPropertyInfo = { propertyTitle, minPriceRange, maxPriceRange, location, propertyImage, description, status, agentName, agentImage, email, role }
 
         console.log(addPropertyInfo);
 
+        if (minPriceRange > maxPriceRange) {
+            Swal.fire({
+                position: "center",
+                icon: "error",
+                title: "Oops...",
+                text: 'Minimum price range should be greater then maximum price range',
+                showConfirmButton: true,
+                timer: 1500
+            });
+            return;
+        }
 
         fetch('http://localhost:5000/properties', {
             method: 'POST',
@@ -49,7 +61,7 @@ const AddAProperty = () => {
                         timer: 1500
                     });
                     form.reset();
-                    navigate('/allProperties')
+                    navigate('/dashboard/addedProperties')
                 }
             })
     }

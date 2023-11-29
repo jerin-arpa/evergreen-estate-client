@@ -40,7 +40,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/allProperties",
-                element: <AllProperties></AllProperties>,
+                element: <PrivateRoute><AllProperties></AllProperties></PrivateRoute>,
             },
             {
                 path: "/propertyDetails/:id",
@@ -81,6 +81,7 @@ const router = createBrowserRouter([
             {
                 path: 'manageUsers',
                 element: <AdminRoute><ManageUser></ManageUser></AdminRoute>,
+                loader: () => fetch('http://localhost:5000/properties'),
             },
             {
                 path: 'manageReviews',

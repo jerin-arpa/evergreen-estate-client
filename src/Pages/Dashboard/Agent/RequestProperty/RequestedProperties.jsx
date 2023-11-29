@@ -63,7 +63,7 @@ const RequestedProperties = () => {
             <div className="divider mb-10"></div>
 
 
-            <div className="overflow-x-auto rounded-xl shadow-2xl">
+            <div className="overflow-x-auto w-80 md:w-[710px] lg:w-full rounded-xl shadow-2xl mb-20">
                 <table className="table">
                     {/* head */}
                     <thead className="bg-[#03a9fc] font-extrabold text-white">

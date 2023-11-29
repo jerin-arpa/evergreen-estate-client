@@ -98,7 +98,17 @@ const AddedProperties = () => {
                                         <div className='flex items-center text-[#03a9fc]'>
                                             <MdDomainVerification></MdDomainVerification>
                                         </div>
-                                        <p><span className='font-bold'>Verification Status:</span> {property.status}</p>
+                                        <p><span className='font-bold'>Verification Status:</span>
+                                            {
+                                                property.status === 'Pending' && <span className="text-warning"> {property.status}</span>
+                                            }
+                                            {
+                                                property.status === 'Verified' && <span className="text-green-500"> {property.status}</span>
+                                            }
+                                            {
+                                                property.status === 'Rejected' && <span className="text-red-600"> {property.status}</span>
+                                            }
+                                        </p>
                                     </div>
                                 </div>
 
@@ -124,7 +134,7 @@ const AddedProperties = () => {
                                     {
                                         property.status === 'Rejected' && (<button disabled className="btn px-8 flex-1 bg-[#03a9fc] border-[#03a9fc] hover:bg-white hover:text-[#03a9fc] text-white hover:border-[#03a9fc]">Update</button>)
                                     }
-                                    {property.status === 'Verified' && (
+                                    {(property.status === 'Verified' || property.status === 'Pending') && (
                                         <button
                                             onClick={() => navigate(`/dashboard/updateProperty/${property._id}`)}
                                             className="btn flex-1 px-8 bg-[#03a9fc] border-[#03a9fc] hover:bg-white hover:text-[#03a9fc] text-white hover:border-[#03a9fc]"

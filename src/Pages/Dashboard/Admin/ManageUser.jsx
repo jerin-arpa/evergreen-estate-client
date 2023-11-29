@@ -4,11 +4,14 @@ import { MdDeleteForever, MdOutlineSupportAgent } from "react-icons/md";
 import { FaUsers } from "react-icons/fa";
 import { SiRobotframework } from "react-icons/si";
 import Swal from "sweetalert2";
+import { useLoaderData } from "react-router-dom";
 
 
 
 const ManageUser = () => {
     const axiosSecure = UseAxiosSecure();
+    const properties = useLoaderData();
+    console.log(properties);
 
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
@@ -70,6 +73,37 @@ const ManageUser = () => {
                     .then((res) => {
                         console.log(res.data);
                         if (res.data) {
+                            const fraudProperties = properties.filter(property => property.email === user?.email)
+
+                            fraudProperties.map(property => {
+                                const propertyTitle = property.propertyTitle;
+                                const minPriceRange = property.minPriceRange;
+                                const maxPriceRange = property.maxPriceRange;
+                                const location = property.location;
+                                const propertyImage = property.propertyImage;
+                                const description = property.description;
+                                const status = property.status;
+
+                                const agentName = property.agentName;
+                                const agentImage = property.agentImage;
+                                const email = property.email;
+                                const role = 'fraud';
+
+                                const addPropertyInfo = { propertyTitle, minPriceRange, maxPriceRange, location, propertyImage, description, status, agentName, agentImage, email, role }
+
+                                fetch(`http://localhost:5000/properties/${property._id}`, {
+                                    method: 'PATCH',
+                                    headers: {
+                                        'content-type': 'application/json'
+                                    },
+                                    body: JSON.stringify(addPropertyInfo),
+                                })
+                                    .then(res => res.json())
+                                    .then(data => {
+                                        console.log(data);
+                                    })
+                            })
+
                             refetch();
                             Swal.fire({
                                 position: 'center',
@@ -124,7 +158,7 @@ const ManageUser = () => {
 
                 <div className="divider mb-10"></div>
 
-                <div className="overflow-x-auto rounded-xl shadow-2xl">
+                <div className="overflow-x-auto w-80 md:w-[710px] lg:w-full rounded-xl shadow-2xl mb-20">
                     <table className="table">
                         {/* head */}
                         <thead className="bg-[#03a9fc] font-extrabold text-white">
@@ -150,7 +184,7 @@ const ManageUser = () => {
 
                                     <th>
                                         {
-                                            user.role === 'admin' ? 'Admin' : <button onClick={() => handleMakeAdmin(user)}
+                                            (user.role === 'admin' || user.role === 'fraud') ? user.role : <button onClick={() => handleMakeAdmin(user)}
                                                 className="btn  bg-[#03a9fc]">
                                                 <FaUsers className="text-2xl text-white"></FaUsers>
                                             </button>
@@ -159,7 +193,7 @@ const ManageUser = () => {
 
                                     <th>
                                         {
-                                            user.role === 'agent' ? 'Agent' : <button onClick={() => handleMakeAgent(user)}
+                                            (user.role === 'agent' || user.role === 'fraud') ? user.role : <button onClick={() => handleMakeAgent(user)}
                                                 className="btn  bg-[#03a9fc]">
                                                 <MdOutlineSupportAgent className="text-2xl text-white"></MdOutlineSupportAgent >
                                             </button>
@@ -169,7 +203,7 @@ const ManageUser = () => {
 
                                     <th>
                                         {
-                                            user.role === 'fraud' ? 'Fraud' : <button onClick={() => handleMakeFraud(user)}
+                                            user.role === 'fraud' ? 'Fraud' : <button disabled={user.role !== 'agent'} onClick={() => handleMakeFraud(user)}
                                                 className="btn  bg-[#03a9fc]">
                                                 <SiRobotframework className="text-2xl text-white"></SiRobotframework>
                                             </button>

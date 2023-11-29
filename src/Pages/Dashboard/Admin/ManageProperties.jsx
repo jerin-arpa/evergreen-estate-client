@@ -54,15 +54,15 @@ const ManageProperties = () => {
 
 
     return (
-        <div>
-            <div className="flex items-center justify-center">
+        <div className="max-w-full">
+            <div className="flex items-center justify-center max-w-full">
                 <h2 className="text-5xl font-bold text-center mt-10 mb-5">MANAGE PROPERTY</h2>
             </div>
 
             <div className="divider mb-10"></div>
 
 
-            <div className="overflow-x-auto rounded-xl shadow-2xl">
+            <div className="overflow-x-auto w-96 md:w-[720px] lg:w-full rounded-xl shadow-2xl mb-20">
                 <table className="table">
                     {/* head */}
                     <thead className="bg-[#03a9fc] font-extrabold text-white">
