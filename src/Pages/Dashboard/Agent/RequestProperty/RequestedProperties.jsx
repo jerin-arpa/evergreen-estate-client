@@ -81,7 +81,7 @@ const RequestedProperties = () => {
                         <tr>
                             <th></th>
                             <th>Property Title</th>
-                            <th>Location</th>
+                            <th>Property Location</th>
                             <th>Buyer Name</th>
                             <th>Buyer Email</th>
                             <th>Offered Price</th>

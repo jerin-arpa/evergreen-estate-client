@@ -11,6 +11,7 @@ import { Helmet } from "react-helmet";
 const ManageReview = () => {
     const axiosSecure = UseAxiosSecure();
     const [reviews, setReviews] = useState([]);
+    console.log(reviews)
 
     useEffect(() => {
         fetch('https://evergreen-estate-server.vercel.app/review')
@@ -69,7 +70,7 @@ const ManageReview = () => {
                     reviews.map(review => <div key={review._id} className="border-4 border-[#03a9fc] p-7 rounded-xl ">
                         <h2 className="text-3xl font-bold mb-4">Reviewer Info</h2>
                         <hr className="w-1/3 mb-5" />
-                        <div className="flex gap-2">
+                        <div className="flex gap-3">
                             <div className="flex justify-center">
                                 {
                                     review.userImage ? (
@@ -84,7 +85,8 @@ const ManageReview = () => {
                             </div>
                             <div className='flex items-center'>
                                 <div>
-                                    <h2 className='font-bold text-xl text-center'>{review.userName}</h2>
+                                    <h2 className='font-bold text-xl'>{review.userName}</h2>
+                                    <h2 className='font-bold text-xl'>{review.userEmail}</h2>
                                 </div>
                             </div>
                         </div>

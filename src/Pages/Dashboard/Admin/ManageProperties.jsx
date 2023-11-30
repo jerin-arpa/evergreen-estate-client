@@ -75,7 +75,7 @@ const ManageProperties = () => {
                         <tr>
                             <th></th>
                             <th>Property Title</th>
-                            <th>Location</th>
+                            <th>Property Location</th>
                             <th>Agent Name</th>
                             <th>Agent Email</th>
                             <th>Price Range</th>
@@ -106,16 +106,34 @@ const ManageProperties = () => {
                                 }
 
                                 <td>
-                                    <button disabled={row.status !== 'Pending'} onClick={() => handleVerify(row)}
-                                        className="btn w-full bg-green-600 border-green-600 hover:bg-white hover:text-green-600 text-white hover:border-green-600">
-                                        Verify
-                                    </button>
+                                    {
+                                        row.status === 'Verified' && <p className="font-bold text-green-500">{row.status}</p>
+                                    }
+                                    {
+                                        row.status === 'Rejected' && <p className="font-bold text-red-500">{row.status}</p>
+                                    }
+                                    {
+                                        row.status === 'Pending' &&
+                                        <button onClick={() => handleVerify(row)}
+                                            className="btn w-full bg-green-600 border-green-600 hover:bg-white hover:text-green-600 text-white hover:border-green-600">
+                                            Verify
+                                        </button>
+                                    }
                                 </td>
                                 <td>
-                                    <button disabled={row.status !== 'Pending'} onClick={() => handleReject(row)}
-                                        className="btn w-full bg-red-500 border-red-500 hover:bg-white hover:text-red-500 text-white hover:border-red-500">
-                                        Reject
-                                    </button>
+                                    {
+                                        row.status === 'Verified' && <p className="font-bold text-green-500">{row.status}</p>
+                                    }
+                                    {
+                                        row.status === 'Rejected' && <p className="font-bold text-red-500">{row.status}</p>
+                                    }
+                                    {
+                                        row.status === 'Pending' &&
+                                        <button disabled={row.status !== 'Pending'} onClick={() => handleReject(row)}
+                                            className="btn w-full bg-red-500 border-red-500 hover:bg-white hover:text-red-500 text-white hover:border-red-500">
+                                            Reject
+                                        </button>
+                                    }
                                 </td>
                             </tr>
                             )}

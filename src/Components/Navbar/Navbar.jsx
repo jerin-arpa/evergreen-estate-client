@@ -45,9 +45,9 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
                     }>About</NavLink>
                 </li>
                 <li>
-                    <NavLink to='/about' className={({ isActive, isPending }) =>
+                    <NavLink to='/contact' className={({ isActive, isPending }) =>
                         isPending ? "pending" : isActive ? "font-bold underline text-[#03a9fc]" : ""
-                    }>About</NavLink>
+                    }>Contact</NavLink>
                 </li>
             </> : <>
                 <li>

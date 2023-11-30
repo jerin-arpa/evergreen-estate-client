@@ -25,6 +25,7 @@ import UpdateProperty from "../Pages/Dashboard/Agent/AddedProperty/UpdatePropert
 import RequestedProperties from "../Pages/Dashboard/Agent/RequestProperty/RequestedProperties";
 import PropertyBought from "../Pages/Dashboard/User/PropertyBought/PropertyBought";
 import Payment from "../Pages/Dashboard/User/PropertyBought/Payment";
+import ManageAdvertise from "../Pages/Dashboard/Admin/ManageAdvertise";
 
 
 
@@ -86,6 +87,10 @@ const router = createBrowserRouter([
             {
                 path: 'manageReviews',
                 element: <AdminRoute><ManageReview></ManageReview></AdminRoute>,
+            },
+            {
+                path: 'manageAdvertise',
+                element: <ManageAdvertise></ManageAdvertise>,
             },
 
             // Agent Route

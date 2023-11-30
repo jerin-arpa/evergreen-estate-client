@@ -62,7 +62,7 @@ const PropertyBought = () => {
 
                                         <p className='text-lg'><span className='font-bold'>Location:</span> {card.location}</p>
 
-                                        <p className='text-lg'><span className='font-bold'>Verification Status:</span>
+                                        <p className='text-lg'><span className='font-bold'>Status:</span>
                                             {card.status === 'Pending' && <span className="text-warning"> {card.status}</span>}
 
                                             {card.status === 'Accepted' && <span className="text-green-500"> {card.status}</span>}
