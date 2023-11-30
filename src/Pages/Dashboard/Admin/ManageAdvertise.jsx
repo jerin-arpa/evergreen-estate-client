@@ -1,12 +1,79 @@
 import { Helmet } from "react-helmet";
-import useProperty from "../../../hooks/useProperty";
+import UseAxiosSecure from "../../../hooks/UseAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
+import Swal from "sweetalert2";
 
 
 const ManageAdvertise = () => {
-    const [properties] = useProperty();
-
+    const { data: properties = [], refetch } = useQuery({
+        queryKey: ['properties'],
+        queryFn: async () => {
+            const res = await axiosSecure.get('/properties');
+            return res.data;
+        },
+    });
+    const axiosSecure = UseAxiosSecure();
     const verifiedProperties = properties.filter(property => property.status && property.status.toLowerCase() === 'verified' && property.role !== 'fraud');
     console.log(verifiedProperties)
+
+
+    const handleAddAdvertise = (property) => {
+        let totalAdvertise = 0;
+        verifiedProperties.map(item => {
+            if (item.advertiseStatus && item.advertiseStatus.toLowerCase() === 'verified') {
+                totalAdvertise++;
+            }
+        })
+
+        if (totalAdvertise >= 6) {
+            Swal.fire({
+                position: "center",
+                icon: "error",
+                title: 'You have already exceed the maximum limit of advertise property',
+                showConfirmButton: false,
+                timer: 1500
+            });
+            return;
+        }
+
+        axiosSecure.patch(`/properties/verifiedAdvertise/${property._id}`)
+            .then(res => {
+                console.log(res.data)
+                if (res.data.modifiedCount > 0) {
+                    refetch();
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: `${property.propertyTitle} is Advertised Now`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            })
+    }
+
+
+    const handleRemoveAdvertise = (property) => {
+        console.log(property)
+        axiosSecure.patch(`/properties/removedAdvertise/${property._id}`)
+            .then(res => {
+                console.log(res.data)
+                if (res.data.modifiedCount > 0) {
+                    refetch();
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: `${property.propertyTitle} is Removed`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            })
+    }
+
+
+
+
 
     return (
         <div>
@@ -60,11 +127,11 @@ const ManageAdvertise = () => {
 
 
                                     <th>
-                                        <button className="btn w-full bg-green-600 border-green-600 hover:bg-white hover:text-green-600 text-white hover:border-green-600">Advertise </button>
+                                        <button disabled={property.advertiseStatus === 'Verified'} onClick={() => handleAddAdvertise(property)} className="btn w-full bg-green-600 border-green-600 hover:bg-white hover:text-green-600 text-white hover:border-green-600">Advertise </button>
                                     </th>
 
                                     <th>
-                                        <button className="btn w-full bg-red-500 border-red-500 hover:bg-white hover:text-red-500 text-white hover:border-red-500">Remove Advertise </button>
+                                        <button disabled={property.advertiseStatus !== 'Verified'} onClick={() => handleRemoveAdvertise(property)} className="btn w-full bg-red-500 border-red-500 hover:bg-white hover:text-red-500 text-white hover:border-red-500">Remove Advertise </button>
                                     </th>
                                 </tr>
                                 )}

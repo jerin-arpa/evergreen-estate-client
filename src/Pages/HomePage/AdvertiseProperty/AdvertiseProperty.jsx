@@ -12,7 +12,8 @@ const AdvertiseProperty = () => {
     }, []);
     const [properties] = useProperty();
 
-    const verifiedProperties = properties.filter(property => property.status && property.status.toLowerCase() === 'verified' && property.role !== 'fraud');
+    const verifiedProperties = properties.filter(property => property.advertiseStatus && property.advertiseStatus.toLowerCase() === 'verified' && property.role !== 'fraud');
+    console.log(verifiedProperties, properties)
 
     return (
         <div className="container mx-auto px-5 mb-20">
