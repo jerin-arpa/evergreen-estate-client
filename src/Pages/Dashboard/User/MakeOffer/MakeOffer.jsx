@@ -31,6 +31,7 @@ const MakeOffer = () => {
         const offeredAmount = form.offeredAmount.value;
         const propertyImage = form.propertyImage.value;
         const status = form.status.value;
+        const agentEmail = form.agentEmail.value;
 
         const buyerName = form.buyerName.value;
         const email = form.email.value;
@@ -50,7 +51,7 @@ const MakeOffer = () => {
         }
 
 
-        const addPropertyInfo = { propertyTitle, propertyImage, location, agentName, status, offeredAmount, buyerName, email, date }
+        const addPropertyInfo = { propertyTitle, propertyImage, location, agentName, agentEmail, status, offeredAmount, buyerName, email, date }
 
         console.log(addPropertyInfo);
 
@@ -147,13 +148,21 @@ const MakeOffer = () => {
                                 </div>
 
 
-                                <div className="form-control">
+                                <div className="form-control w-full">
                                     <label className="label">
-                                        <span className="label-text">Offered Amount <span className="text-[#03a9fc]">({`$${makeOffer.property.minPriceRange}-$${makeOffer.property.maxPriceRange}`})</span></span>
+                                        <span className="label-text">Agent Email</span>
                                     </label>
-                                    <input type="text" name="offeredAmount" placeholder="Enter You offered Amount" className="input input-bordered" required />
+                                    <input disabled type="email" name="agentEmail" defaultValue={makeOffer.property.email} className="input input-bordered" required />
                                 </div>
                             </div>
+                        </div>
+
+
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Offered Amount <span className="text-[#03a9fc]">({`$${makeOffer.property.minPriceRange}-$${makeOffer.property.maxPriceRange}`})</span></span>
+                            </label>
+                            <input type="text" name="offeredAmount" placeholder="Enter You offered Amount" className="input input-bordered" required />
                         </div>
 
 

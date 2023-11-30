@@ -91,6 +91,10 @@ const CheckoutForm = () => {
                 // now save the payment in the database
                 const payment = {
                     email: user.email,
+                    buyerName: user.displayName,
+                    propertyTitle: amount.propertyTitle,
+                    location: amount.location,
+                    agentEmail: amount.agentEmail,
                     price: amount.offeredAmount,
                     transactionId: paymentIntent.id,
                     date: date,

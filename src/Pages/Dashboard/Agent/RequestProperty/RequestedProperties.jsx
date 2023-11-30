@@ -2,10 +2,13 @@ import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
 import UseAxiosSecure from "../../../../hooks/UseAxiosSecure";
 import { Helmet } from "react-helmet";
+import { useContext } from "react";
+import { AuthContext } from "../../../../provider/AuthProvider";
 
 
 
 const RequestedProperties = () => {
+    const { user } = useContext(AuthContext);
     const axiosSecure = UseAxiosSecure();
     const { data: property = [], refetch } = useQuery({
         queryKey: ['offeredAmount'],
@@ -15,6 +18,8 @@ const RequestedProperties = () => {
         },
     });
     console.log(property)
+
+    const requestedProperty = property.filter(item => item.agentEmail?.toLowerCase() === user?.email.toLowerCase());
 
 
     const handleAccepted = row => {
@@ -87,7 +92,7 @@ const RequestedProperties = () => {
                     </thead>
                     <tbody>
                         {
-                            property.map((row, index) => <tr key={row._id}>
+                            requestedProperty.map((row, index) => <tr key={row._id}>
                                 <th>{index + 1}</th>
 
                                 <td className="font-bold">{row.propertyTitle}</td>
@@ -100,7 +105,7 @@ const RequestedProperties = () => {
                                     row.status === 'Pending' && <td className="font-bold text-warning">{row.status}</td>
                                 }
                                 {
-                                    row.status === 'Accepted' && <td className="font-bold text-green-500">{row.status}</td>
+                                    (row.status === 'Accepted' || row.status === 'Bought') && <td className="font-bold text-green-500">{row.status}</td>
                                 }
                                 {
                                     row.status === 'Rejected' && <td className="font-bold text-red-500">{row.status}</td>
