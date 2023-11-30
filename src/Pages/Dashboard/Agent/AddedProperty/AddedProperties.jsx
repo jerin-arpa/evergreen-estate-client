@@ -22,7 +22,7 @@ const AddedProperties = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch('http://localhost:5000/properties')
+        fetch('https://evergreen-estate-server.vercel.app/properties')
             .then(res => res.json())
             .then(data => {
                 console.log(data)

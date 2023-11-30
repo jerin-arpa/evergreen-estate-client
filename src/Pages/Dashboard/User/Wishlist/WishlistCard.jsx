@@ -21,7 +21,7 @@ const WishlistCard = ({ card, myWishlist, setMyWishlist }) => {
         })
             .then((result) => {
                 if (result.isConfirmed) {
-                    fetch(`http://localhost:5000/wishlist/${_id}`, {
+                    fetch(`https://evergreen-estate-server.vercel.app/wishlist/${_id}`, {
                         method: 'DELETE',
                     })
                         .then(res => res.json())

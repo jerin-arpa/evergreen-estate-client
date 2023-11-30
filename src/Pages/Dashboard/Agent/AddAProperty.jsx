@@ -42,7 +42,7 @@ const AddAProperty = () => {
             return;
         }
 
-        fetch('http://localhost:5000/properties', {
+        fetch('https://evergreen-estate-server.vercel.app/properties', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

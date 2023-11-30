@@ -45,7 +45,7 @@ const router = createBrowserRouter([
             {
                 path: "/propertyDetails/:id",
                 element: <PrivateRoute><PropertyDetails></PropertyDetails></PrivateRoute>,
-                loader: () => fetch('http://localhost:5000/properties'),
+                loader: () => fetch('https://evergreen-estate-server.vercel.app/properties'),
             },
             {
                 path: "/contact",
@@ -81,7 +81,7 @@ const router = createBrowserRouter([
             {
                 path: 'manageUsers',
                 element: <AdminRoute><ManageUser></ManageUser></AdminRoute>,
-                loader: () => fetch('http://localhost:5000/properties'),
+                loader: () => fetch('https://evergreen-estate-server.vercel.app/properties'),
             },
             {
                 path: 'manageReviews',
@@ -100,7 +100,7 @@ const router = createBrowserRouter([
             {
                 path: "updateProperty/:id",
                 element: <UpdateProperty></UpdateProperty>,
-                loader: ({ params }) => fetch(`http://localhost:5000/properties/${params.id}`),
+                loader: ({ params }) => fetch(`https://evergreen-estate-server.vercel.app/properties/${params.id}`),
             },
             {
                 path: "soldProperties",
@@ -116,7 +116,7 @@ const router = createBrowserRouter([
             {
                 path: 'wishlist',
                 element: <Wishlist></Wishlist>,
-                loader: () => fetch('http://localhost:5000/wishlist'),
+                loader: () => fetch('https://evergreen-estate-server.vercel.app/wishlist'),
             },
             {
                 path: 'myReviews',
@@ -125,7 +125,7 @@ const router = createBrowserRouter([
             {
                 path: 'makeOffer/:id',
                 element: <MakeOffer></MakeOffer>,
-                loader: () => fetch('http://localhost:5000/wishlist')
+                loader: () => fetch('https://evergreen-estate-server.vercel.app/wishlist')
             },
             {
                 path: 'propertyBought',
@@ -134,7 +134,7 @@ const router = createBrowserRouter([
             {
                 path: 'payment/:id',
                 element: <Payment></Payment>,
-                loader: () => fetch('http://localhost:5000/offeredAmount')
+                loader: () => fetch('https://evergreen-estate-server.vercel.app/offeredAmount')
             }
         ]
     }

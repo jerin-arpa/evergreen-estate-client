@@ -92,7 +92,7 @@ const ManageUser = () => {
 
                                 const addPropertyInfo = { propertyTitle, minPriceRange, maxPriceRange, location, propertyImage, description, status, agentName, agentImage, email, role }
 
-                                fetch(`http://localhost:5000/properties/${property._id}`, {
+                                fetch(`https://evergreen-estate-server.vercel.app/properties/${property._id}`, {
                                     method: 'PATCH',
                                     headers: {
                                         'content-type': 'application/json'

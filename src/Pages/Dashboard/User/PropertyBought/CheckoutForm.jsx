@@ -2,8 +2,9 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useContext, useEffect, useState } from "react";
 import UseAxiosSecure from "../../../../hooks/UseAxiosSecure";
 import { AuthContext } from "../../../../provider/AuthProvider";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import moment from "moment/moment";
 
 const CheckoutForm = () => {
     const [error, setError] = useState('');
@@ -14,24 +15,26 @@ const CheckoutForm = () => {
     const stripe = useStripe();
     const elements = useElements();
     const axiosSecure = UseAxiosSecure();
+    const date = moment().format('MMMM Do YYYY');
 
     const [amount, setAmount] = useState(0);
+    const { id } = useParams();
+
     useEffect(() => {
-        fetch('http://localhost:5000/offeredAmount')
+        fetch('https://evergreen-estate-server.vercel.app/offeredAmount')
             .then(res => res.json())
             .then(data => {
-                console.log(data);
-                setAmount(data);
+                const item = data.find(item => item._id === id);
+                setAmount(item);
             })
-    }, [])
+    }, [id])
 
 
 
     useEffect(() => {
-        if (amount.length > 0) {
-            axiosSecure.post('/create-payment-intent', { price: amount[0].offeredAmount })
+        if (amount) {
+            axiosSecure.post('/create-payment-intent', { price: amount.offeredAmount })
                 .then(res => {
-                    console.log(res.data.clientSecret)
                     setClientSecret(res.data.clientSecret)
                 })
         }
@@ -90,23 +93,23 @@ const CheckoutForm = () => {
                     email: user.email,
                     price: amount.offeredAmount,
                     transactionId: paymentIntent.id,
-                    date: new Date(), // utc date convert. use moment js to 
-                    cartIds: amount.map(item => item._id),
-                    menuItemIds: amount.map(item => item.menuId),
+                    date: date,
+                    amountIds: amount._id,
                     status: 'pending'
                 }
 
+                console.log(payment)
                 const res = await axiosSecure.post('/payments', payment);
                 console.log('payment saved', res.data);
                 if (res.data?.paymentResult?.insertedId) {
                     Swal.fire({
                         position: "top-end",
                         icon: "success",
-                        title: "Thank you for the taka paisa",
+                        title: "Thank you for your purchase",
                         showConfirmButton: false,
                         timer: 1500
                     });
-                    navigate('/')
+                    navigate('/dashboard/propertyBought')
                 }
 
             }

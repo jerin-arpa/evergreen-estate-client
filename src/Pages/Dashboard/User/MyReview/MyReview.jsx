@@ -13,7 +13,7 @@ const MyReview = () => {
     const { data: reviewData, refetch } = useQuery({
         queryKey: ['reviews'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/review');
+            const res = await fetch('https://evergreen-estate-server.vercel.app/review');
             return res.json();
         },
     });
@@ -36,7 +36,7 @@ const MyReview = () => {
         })
             .then((result) => {
                 if (result.isConfirmed) {
-                    fetch(`http://localhost:5000/review/${_id}`, {
+                    fetch(`https://evergreen-estate-server.vercel.app/review/${_id}`, {
                         method: 'DELETE',
                     })
                         .then(res => res.json())

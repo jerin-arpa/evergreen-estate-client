@@ -39,7 +39,7 @@ const PropertyDetails = () => {
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/review')
+        fetch('https://evergreen-estate-server.vercel.app/review')
             .then(res => res.json())
             .then(data => {
                 setReviews(data);
@@ -86,7 +86,7 @@ const PropertyDetails = () => {
             reviewDescription,
         }
 
-        fetch('http://localhost:5000/review', {
+        fetch('https://evergreen-estate-server.vercel.app/review', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

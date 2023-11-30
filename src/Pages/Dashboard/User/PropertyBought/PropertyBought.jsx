@@ -10,7 +10,7 @@ const PropertyBought = () => {
 
     const [property, setProperty] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/offeredAmount')
+        fetch('https://evergreen-estate-server.vercel.app/offeredAmount')
             .then(res => res.json())
             .then(data => {
                 console.log(data);
@@ -68,14 +68,20 @@ const PropertyBought = () => {
                                             {card.status === 'Accepted' && <span className="text-green-500"> {card.status}</span>}
 
                                             {card.status === 'Rejected' && <span className="text-red-600"> {card.status}</span>}
+
+                                            {card.status === 'Bought' && <span className="text-[#03a9fc]"> {card.status}</span>}
                                         </p>
                                     </div>
 
                                     <div className='mt-10 flex gap-5 w-full'>
                                         {
-                                            card.status === 'Accepted' ? (<Link className="w-full" to={`/dashboard/payment/${card._id}`}>
+                                            card.status === 'Accepted' && (<Link className="w-full" to={`/dashboard/payment/${card._id}`}>
                                                 <button className="btn w-full bg-[#03a9fc] border-[#03a9fc] hover:bg-white hover:text-[#03a9fc] text-white hover:border-[#03a9fc]">PAY</button>
-                                            </Link>) : (<button disabled className="btn w-full bg-[#03a9fc] border-[#03a9fc] hover:bg-white hover:text-[#03a9fc] text-white hover:border-[#03a9fc]">PAY</button>)
+                                            </Link>)
+                                        }
+                                        {card.status === 'Bought' && <p><span className="font-bold text-xl">Transaction Id:</span> {card.transactionId}</p>}
+                                        {(card.status === 'Pending' || card.status === 'Rejected') &&
+                                            (<button disabled className="btn w-full bg-[#03a9fc] border-[#03a9fc] hover:bg-white hover:text-[#03a9fc] text-white hover:border-[#03a9fc]">PAY</button>)
                                         }
                                     </div>
                                 </div>

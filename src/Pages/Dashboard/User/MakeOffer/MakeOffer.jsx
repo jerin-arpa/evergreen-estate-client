@@ -55,7 +55,7 @@ const MakeOffer = () => {
         console.log(addPropertyInfo);
 
 
-        fetch('http://localhost:5000/offeredAmount', {
+        fetch('https://evergreen-estate-server.vercel.app/offeredAmount', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
