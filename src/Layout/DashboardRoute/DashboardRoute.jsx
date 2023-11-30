@@ -1,5 +1,5 @@
 import { FaCartPlus, FaHome, FaUser, FaUsers } from "react-icons/fa";
-import { MdBookmarkAdded, MdOutlineMenu, MdRealEstateAgent, MdReviews } from "react-icons/md";
+import { MdBookmarkAdded, MdOutlineManageHistory, MdOutlineMenu, MdRealEstateAgent, MdReviews } from "react-icons/md";
 import { IoIosAddCircle } from "react-icons/io";
 import { BiSolidAnalyse } from "react-icons/bi";
 import { RiMenuSearchFill } from "react-icons/ri";
@@ -38,11 +38,11 @@ const DashboardRoute = () => {
                         <MdReviews></MdReviews>
                         Manage Reviews</NavLink>
                 </li>
-                {/* <li className="text-xl">
+                <li className="text-xl">
                     <NavLink to="/dashboard/manageAdvertise">
                         <MdOutlineManageHistory></MdOutlineManageHistory>
                         Manage Advertise</NavLink>
-                </li> */}
+                </li>
             </>
         }
 

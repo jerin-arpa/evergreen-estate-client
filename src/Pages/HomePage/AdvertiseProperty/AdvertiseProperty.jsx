@@ -1,7 +1,19 @@
 import { motion } from "framer-motion";
 import { FaGripfire } from "react-icons/fa";
+import useProperty from "../../../hooks/useProperty";
+import PropertyCard from "../../AllProperties/PropertyCard";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from "react";
 
 const AdvertiseProperty = () => {
+    useEffect(() => {
+        AOS.init();
+    }, []);
+    const [properties] = useProperty();
+
+    const verifiedProperties = properties.filter(property => property.status && property.status.toLowerCase() === 'verified' && property.role !== 'fraud');
+
     return (
         <div className="container mx-auto px-5 mb-20">
             <div className="mb-14">
@@ -39,7 +51,12 @@ const AdvertiseProperty = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-
+                {
+                    verifiedProperties.slice(0, 6).map(property => <PropertyCard
+                        key={property._id}
+                        property={property}
+                    ></PropertyCard>)
+                }
             </div>
         </div>
     );
