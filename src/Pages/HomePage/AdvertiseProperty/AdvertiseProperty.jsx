@@ -22,7 +22,7 @@ const AdvertiseProperty = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 1, delay: 0.5 }}
                 >
-                    <h1 className="mb-5 text-3xl lg:text-6xl font-bold text-center">DISCOVER <span className='text-[#03a9fc]'>PROPERTY</span></h1>
+                    <h1 className="mb-5 text-3xl lg:text-6xl font-bold text-center">ADVERTISE <span className='text-[#03a9fc]'>PROPERTY</span></h1>
                 </motion.div>
                 <motion.div
                     initial={{ opacity: 0, x: 20 }}
