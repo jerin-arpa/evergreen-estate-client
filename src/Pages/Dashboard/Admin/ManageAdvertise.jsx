@@ -19,7 +19,7 @@ const ManageAdvertise = () => {
 
             <div className="container mx-auto px-5 ">
                 <div className="flex items-center justify-center">
-                    <h2 className="text-5xl font-bold text-center mt-10 mb-5">MANAGE ADVERTISE {verifiedProperties.length}</h2>
+                    <h2 className="text-5xl font-bold text-center mt-10 mb-5 uppercase">Advertise property</h2>
                 </div>
 
                 <div className="divider mb-10"></div>
@@ -40,31 +40,31 @@ const ManageAdvertise = () => {
                         </thead>
                         <tbody>
                             {
-                                verifiedProperties.map((user, index) => <tr key={user._id}>
+                                verifiedProperties.map((property, index) => <tr key={property._id}>
                                     <th>{index + 1}</th>
 
                                     <td>
                                         <div className="avatar">
                                             <div className="mask mask-squircle w-12 h-12">
-                                                <img src={verifiedProperties.propertyImage} alt="" />
+                                                <img src={property.propertyImage} alt="" />
                                             </div>
                                         </div>
                                     </td>
                                     <td>
-                                        <div className="font-bold">{verifiedProperties.propertyTitle}</div>
+                                        <div className="font-bold">{property.propertyTitle}</div>
                                     </td>
 
-                                    <td className="font-bold">{`${verifiedProperties.minPriceRange}-${verifiedProperties.maxPriceRange}`}</td>
+                                    <td className="font-bold">{`${property.minPriceRange}-${property.maxPriceRange}`}</td>
 
-                                    <td className="font-bold">{user.email}</td>
+                                    <td className="font-bold">{property.agentName}</td>
 
 
                                     <th>
-                                        <button className="btn  bg-[#03a9fc]">Advertise </button>
+                                        <button className="btn w-full bg-green-600 border-green-600 hover:bg-white hover:text-green-600 text-white hover:border-green-600">Advertise </button>
                                     </th>
 
                                     <th>
-                                        <button className="btn  bg-[#03a9fc]">Remove Advertise </button>
+                                        <button className="btn w-full bg-red-500 border-red-500 hover:bg-white hover:text-red-500 text-white hover:border-red-500">Remove Advertise </button>
                                     </th>
                                 </tr>
                                 )}

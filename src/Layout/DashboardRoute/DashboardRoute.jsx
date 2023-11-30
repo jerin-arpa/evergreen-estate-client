@@ -41,7 +41,7 @@ const DashboardRoute = () => {
                 <li className="text-xl">
                     <NavLink to="/dashboard/manageAdvertise">
                         <MdOutlineManageHistory></MdOutlineManageHistory>
-                        Manage Advertise</NavLink>
+                        Advertise Property</NavLink>
                 </li>
             </>
         }
